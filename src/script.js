@@ -1,5 +1,6 @@
 import UI from './ui/ui';
 import Events from './Events/Events';
+import Storage from './Storage/Storage';
 
 (function () {
 	const app = {

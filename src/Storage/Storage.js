@@ -39,6 +39,10 @@ export default class Storage {
 		projects.push(project);
 		localStorage.setItem('projects', JSON.stringify(projects));
 	}
+	static getAndFilterTodos(filterBy) {
+		const filtered = Storage.getTodos().filter(todo => todo.from === filterBy);
+		return filtered;
+	}
 }
 
 function dummytodos() {

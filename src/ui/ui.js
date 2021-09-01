@@ -88,6 +88,8 @@ export default class UI {
 	static myContent() {
 		this.makeContentWrap();
 		this.title();
+		this.renderEachTask();
+		this.renderAddnewTask();
 	}
 	static makeContentWrap() {
 		return (this.contentWrap = domFactory.createDiv({
@@ -99,6 +101,20 @@ export default class UI {
 		return (this.title = domFactory.createDiv({
 			elementName: 'title',
 			text: 'title',
+			parent: this.contentWrap,
+		}));
+	}
+	static renderEachTask() {
+		return (this.task = domFactory.createDiv({
+			elementName: 'task',
+			// text: 'task',
+			parent: this.contentWrap,
+		}));
+	}
+	static renderAddnewTask() {
+		return (this.addNewTask = domFactory.createButton({
+			elementName: 'addNewTask',
+			text: '+ add task',
 			parent: this.contentWrap,
 		}));
 	}

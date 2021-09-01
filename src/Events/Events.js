@@ -1,7 +1,11 @@
+import domFactory from '../domFactory/domFactory';
+
 export default class Events {
 	static init() {
 		this.closeNavMenu();
+		this.allTasks();
 	}
+	//! < nav > !\\
 	static closeNavMenu() {
 		const burger = document.querySelector('.burger');
 		burger.addEventListener('click', this.burgerEvent);
@@ -14,4 +18,23 @@ export default class Events {
 			navMenu.style.display = 'none';
 		}
 	}
+	//! </ nav > !\\
+
+	//! < content Buttons > !\\
+	static allTasks() {
+		const allTasksBtn = document.querySelector('.all');
+		allTasksBtn.addEventListener('click', this.allEvent);
+	}
+	static allEvent(e) {
+		console.log(e);
+		const parent = document.querySelector('.task');
+		parent.appendChild(
+			domFactory.createDiv({
+				elementName: 'hello',
+				text: 'hello',
+				parent: parent,
+			})
+		);
+	}
+	//! </ content Buttons > !\\
 }
