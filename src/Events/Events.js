@@ -1,4 +1,6 @@
 import domFactory from '../domFactory/domFactory';
+import removeAllChildNodes from '../removeAllChildNodes/removeAllChildNodes';
+import Storage from '../Storage/Storage';
 
 export default class Events {
 	static init() {
@@ -26,15 +28,23 @@ export default class Events {
 		allTasksBtn.addEventListener('click', this.allEvent);
 	}
 	static allEvent(e) {
-		console.log(e);
+		const title = document.querySelector('.title');
+		title.textContent = e.target.textContent;
 		const parent = document.querySelector('.task');
-		parent.appendChild(
+		removeAllChildNodes(parent);
+		const myArr = Storage.getAndFilterTodos('all');
+		for (let x of myArr) {
 			domFactory.createDiv({
-				elementName: 'hello',
-				text: 'hello',
+				elementName: x.name.trim(),
+				text: x.name,
 				parent: parent,
-			})
-		);
+			});
+		}
+		// domFactory.createDiv({
+		// 	elementName: 'hello',
+		// 	text: 'hello',
+		// 	parent: parent,
+		// });
 	}
 	//! </ content Buttons > !\\
 }

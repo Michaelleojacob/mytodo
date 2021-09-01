@@ -100,7 +100,7 @@ export default class UI {
 	static title() {
 		return (this.title = domFactory.createDiv({
 			elementName: 'title',
-			text: 'title',
+			// text: 'title',
 			parent: this.contentWrap,
 		}));
 	}
@@ -112,11 +112,14 @@ export default class UI {
 		}));
 	}
 	static renderAddnewTask() {
-		return (this.addNewTask = domFactory.createButton({
-			elementName: 'addNewTask',
-			text: '+ add task',
-			parent: this.contentWrap,
-		}));
+		return (
+			(this.addNewTask = domFactory.createButton({
+				elementName: 'addNewTask',
+				text: '+ add task',
+				parent: this.contentWrap,
+			})),
+			this.addNewTask.classList.add('addNew', 'closeOnClick')
+		);
 	}
 	//! </ content > !\\
 

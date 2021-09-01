@@ -40,4 +40,17 @@ export default class domFactory {
 		this.elementParent.appendChild(this.elementName);
 		return this.elementName;
 	}
+	static testing({
+		elementName,
+		className = elementName.trim(),
+		text = null,
+		parent,
+	}) {
+		const trimElementName = elementName.trim();
+		this.elementName = document.createElement('div');
+		this.elementName.classList.add(...className);
+		this.elementName.textContent = text;
+		parent.appendChild(this.elementName);
+		return this.elementName;
+	}
 }
