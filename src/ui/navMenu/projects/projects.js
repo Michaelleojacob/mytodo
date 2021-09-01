@@ -26,13 +26,13 @@ export default class AddProjectsToUI {
 		const myArr = Storage.getProjects();
 		myArr.forEach(x => {
 			const trimName = x.name.trim().split(' ').join('');
-			return domFactory.elementWithMultipleClasses({
+			return (x = domFactory.elementWithMultipleClasses({
 				elementName: trimName,
 				type: 'button',
 				classes: ['navButton', trimName],
 				text: x.name,
 				parent: this.projectsWrapper,
-			});
+			}));
 		});
 	}
 }

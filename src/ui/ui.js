@@ -17,6 +17,7 @@ export default class UI {
 		this.renderNavWrap();
 		this.renderAllTodayWeekMonthButtons();
 		this.renderProjects();
+		this.renderNewProjectButton();
 	}
 	static renderNavWrap() {
 		return (this.navWrap = domFactory.elementWithMultipleClasses({
@@ -30,6 +31,16 @@ export default class UI {
 	}
 	static renderProjects() {
 		AddProjectsToUI.init(this.navWrap);
+	}
+	//! might get rid of this
+	static renderNewProjectButton() {
+		return (this.newProjectButton = domFactory.elementWithMultipleClasses({
+			elementName: this.newProjectButton,
+			type: 'button',
+			classes: ['newProj', 'closeOnClick'],
+			text: `+ add`,
+			parent: this.navWrap,
+		}));
 	}
 
 	//! < content > !\\
