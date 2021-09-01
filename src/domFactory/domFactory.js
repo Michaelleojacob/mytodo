@@ -31,7 +31,7 @@ export default class domFactory {
 		parent,
 	}) {
 		const trimElementName = elementName.trim();
-		this.elementParent = document.createElement('div');
+		this.elementParent = document.createElement(type);
 		this.elementParent.classList.add(parentName);
 		this.elementName = document.createElement(type);
 		this.elementName.classList.add(trimElementName);
