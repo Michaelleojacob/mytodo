@@ -33,9 +33,10 @@ export default class UI {
 	//! < buttons > !!\
 	static myNavButtons() {
 		this.makeNavWrap();
-		this.allButton();
-		this.todayButton();
-		this.monthButton();
+		this.allTodayMonth();
+		// this.allButton('all');
+		// this.todayButton('today');
+		// this.monthButton('month');
 	}
 	static makeNavWrap() {
 		return (
@@ -46,27 +47,19 @@ export default class UI {
 			this.navWrap.classList.add('closeOnClick')
 		);
 	}
-	static allButton() {
-		return (this.allbtn = domFactory.createButton({
-			elementName: 'all',
-			text: 'all',
-			parent: this.navWrap,
-		}));
+	static allTodayMonth() {
+		const arr = ['all', 'today', 'month'];
+		arr.forEach(x => {
+			return (this.x = domFactory.elementWithMultipleClasses({
+				elementName: x,
+				type: 'button',
+				classes: ['navButton', x],
+				text: x,
+				parent: this.navWrap,
+			}));
+		});
 	}
-	static todayButton() {
-		return (this.todayBtn = domFactory.createButton({
-			elementName: 'today',
-			text: 'today',
-			parent: this.navWrap,
-		}));
-	}
-	static monthButton() {
-		return (this.monthBtn = domFactory.createButton({
-			elementName: 'month',
-			text: 'month',
-			parent: this.navWrap,
-		}));
-	}
+
 	//! </ buttons > !!\
 
 	//! < projects > !\\

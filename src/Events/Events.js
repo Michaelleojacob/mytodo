@@ -24,27 +24,33 @@ export default class Events {
 
 	//! < content Buttons > !\\
 	static allTasks() {
-		const allTasksBtn = document.querySelector('.all');
-		allTasksBtn.addEventListener('click', this.allEvent);
+		document.addEventListener('DOMContentLoaded', () => {
+			document.addEventListener('click', this.navButtonEvents);
+		});
 	}
-	static allEvent(e) {
-		const title = document.querySelector('.title');
-		title.textContent = e.target.textContent;
-		const parent = document.querySelector('.task');
-		removeAllChildNodes(parent);
-		const myArr = Storage.getAndFilterTodos('all');
-		for (let x of myArr) {
-			domFactory.createDiv({
-				elementName: x.name.trim(),
-				text: x.name,
-				parent: parent,
-			});
+	static navButtonEvents(e) {
+		if (e.target.classList.contains('navButton')) {
+			console.log(e);
+			const targetName = e.target.textContent;
+			console.log(targetName);
+			const title = document.querySelector('.title');
+			title.textContent = e.target.textContent;
+			const parent = document.querySelector('.task');
+			removeAllChildNodes(parent);
+			const myArr = Storage.getAndFilterTodos('from', targetName);
+			for (let x of myArr) {
+				domFactory.createDiv({
+					elementName: x.name.trim(),
+					text: x.name,
+					parent: parent,
+				});
+			}
+			// domFactory.createDiv({
+			// 	elementName: 'hello',
+			// 	text: 'hello',
+			// 	parent: parent,
+			// });
 		}
-		// domFactory.createDiv({
-		// 	elementName: 'hello',
-		// 	text: 'hello',
-		// 	parent: parent,
-		// });
 	}
 	//! </ content Buttons > !\\
 }

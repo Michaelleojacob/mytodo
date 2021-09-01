@@ -40,15 +40,15 @@ export default class domFactory {
 		this.elementParent.appendChild(this.elementName);
 		return this.elementName;
 	}
-	static testing({
+	static elementWithMultipleClasses({
 		elementName,
-		className = elementName.trim(),
+		type = 'div',
+		classes,
 		text = null,
 		parent,
 	}) {
-		const trimElementName = elementName.trim();
-		this.elementName = document.createElement('div');
-		this.elementName.classList.add(...className);
+		this.elementName = document.createElement(type);
+		this.elementName.classList.add(...classes);
 		this.elementName.textContent = text;
 		parent.appendChild(this.elementName);
 		return this.elementName;

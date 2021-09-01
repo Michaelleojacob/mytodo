@@ -18,11 +18,12 @@ import domFactory from './domFactory/domFactory';
 	app.init();
 })();
 
+const myvar = 'hi';
+
 const mything = document.querySelector('#container');
-const thing = domFactory.testing({
-	elementName: 'thing',
-	className: ['lol', 'haha', 'xd'],
-	text: 'thing',
+const thing = domFactory.elementWithMultipleClasses({
+	elementName: myvar,
+	classes: ['lol', 'xd', myvar],
+	text: myvar,
 	parent: mything,
 });
-console.log(thing);
