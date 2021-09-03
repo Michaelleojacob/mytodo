@@ -18,7 +18,8 @@ export default class NavButtonEvent {
 			NavButtonEvent.renderTasksLogic(e, 'date', '5/5/2021');
 		}
 		if (e.target.classList.contains('sortByFrom')) {
-			NavButtonEvent.renderTasksLogic(e, 'from', 'all');
+			const clickTarget = e.target.textContent.trim();
+			NavButtonEvent.renderTasksLogic(e, 'from', clickTarget);
 		}
 	}
 
