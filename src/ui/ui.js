@@ -3,23 +3,25 @@ import domFactory from '../domFactory/domFactory';
 import Header from './header/header';
 import AllTodayWeekMonth from '../ui/navMenu/allTodayWeekMonth/allTodayWeekMonth';
 import AddProjectsToUI from '../ui/navMenu/projects/projects';
+import TaskArea from './taskArea/taskArea';
 
 export default class UI {
 	static init() {
 		this.parent = document.querySelector('#container');
-		this.renderHeader();
-		this.renderContent();
+		this.header();
+		this.navMenu();
+		this.tasks();
 	}
-	static renderHeader() {
+	static header() {
 		Header.init(this.parent);
 	}
-	static renderContent() {
-		this.renderNavWrap();
+	static navMenu() {
+		this.navWrap();
 		this.renderAllTodayWeekMonthButtons();
 		this.renderProjects();
 		this.renderNewProjectButton();
 	}
-	static renderNavWrap() {
+	static navWrap() {
 		return (this.navWrap = domFactory.elementWithMultipleClasses({
 			elementName: 'navWrap',
 			classes: ['navWrap', 'closeOnClick'],
@@ -42,32 +44,7 @@ export default class UI {
 			parent: this.navWrap,
 		}));
 	}
-
-	//! < content > !\\
-
-	// static myContent() {
-	// 	this.makeContentWrap();
-	// 	this.title();
-	// 	this.renderEachTask();
-	// }
-	// static makeContentWrap() {
-	// 	return (this.contentWrap = domFactory.createDiv({
-	// 		elementName: 'contentWrap',
-	// 		parent: this.parent,
-	// 	}));
-	// }
-	// static title() {
-	// 	return (this.title = domFactory.createDiv({
-	// 		elementName: 'title',
-	// 		parent: this.contentWrap,
-	// 	}));
-	// }
-	// static renderEachTask() {
-	// 	return (this.task = domFactory.createDiv({
-	// 		elementName: 'task',
-	// 		parent: this.contentWrap,
-	// 	}));
-	// }
-
-	//! </ content > !\\
+	static tasks() {
+		TaskArea.init(this.parent);
+	}
 }

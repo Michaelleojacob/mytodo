@@ -31,25 +31,21 @@ export default class Events {
 	static navButtonEvents(e) {
 		if (e.target.classList.contains('navButton')) {
 			console.log(e);
+			console.log(e.target.textContent);
 			const targetName = e.target.textContent;
-			console.log(targetName);
-			const title = document.querySelector('.title');
-			title.textContent = e.target.textContent;
-			const parent = document.querySelector('.task');
-			removeAllChildNodes(parent);
-			const myArr = Storage.getAndFilterTodos('from', targetName);
-			for (let x of myArr) {
-				domFactory.createDiv({
-					elementName: x.name.trim(),
-					text: x.name,
-					parent: parent,
-				});
-			}
-			// domFactory.createDiv({
-			// 	elementName: 'hello',
-			// 	text: 'hello',
-			// 	parent: parent,
-			// });
+			// console.log(targetName);
+			// const title = document.querySelector('.title');
+			// title.textContent = e.target.textContent;
+			// const parent = document.querySelector('.task');
+			// removeAllChildNodes(parent);
+			// const myArr = Storage.getAndFilterTodos('from', targetName);
+			// for (let x of myArr) {
+			// 	domFactory.createDiv({
+			// 		elementName: x.name.trim(),
+			// 		text: x.name,
+			// 		parent: parent,
+			// 	});
+			// }
 		}
 	}
 	//! </ content Buttons > !\\

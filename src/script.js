@@ -22,13 +22,3 @@ import AddProjectsToUI from './testing';
 	};
 	app.init();
 })();
-
-const myvar = 'hi';
-
-const mything = document.querySelector('#container');
-const thing = domFactory.elementWithMultipleClasses({
-	elementName: myvar,
-	classes: ['lol', 'xd', myvar],
-	text: myvar,
-	parent: mything,
-});
