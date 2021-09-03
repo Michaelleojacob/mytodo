@@ -14,10 +14,10 @@ export default class AllTodayWeekMonth {
 	}
 	static allTodayMonth() {
 		const items = [
-			{ name: 'all', classes: ['time'] },
-			{ name: 'today', classes: ['from'] },
-			{ name: 'week', classes: ['from'] },
-			{ name: 'month', classes: ['from'] },
+			{ name: 'all', classes: ['from'] },
+			{ name: 'today', classes: ['time'] },
+			{ name: 'week', classes: ['time'] },
+			{ name: 'month', classes: ['time'] },
 		];
 
 		items.forEach(({ name, classes }) => {
@@ -28,6 +28,8 @@ export default class AllTodayWeekMonth {
 				text: name,
 				parent: this.allTodayMonthWrapper,
 			});
+			console.log(element);
+			return element;
 		});
 	}
 }
