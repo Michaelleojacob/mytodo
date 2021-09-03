@@ -1,4 +1,24 @@
 export default class domFactory {
+	static domElement({
+		type = 'div',
+		classes,
+		attributes = null,
+		text = null,
+		children = null,
+	}) {
+		const el = document.createElement(type);
+		el.classList.add(...classes);
+		el.textContent = text;
+		if (attributes !== null) {
+			for (key of attributes) {
+				el.setAttribute(key, attributes[key]);
+			}
+		}
+		if (children !== null) {
+			el.appendChild(...children);
+		}
+		return el;
+	}
 	static createDiv({ elementName, text = null, parent }) {
 		const trimElementName = elementName.trim();
 		this.elementName = document.createElement('div');

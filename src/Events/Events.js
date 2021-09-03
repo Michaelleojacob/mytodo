@@ -24,14 +24,13 @@ export default class Events {
 
 	//! < content Buttons > !\\
 	static allTasks() {
-		document.addEventListener('DOMContentLoaded', () => {
-			document.addEventListener('click', this.navButtonEvents);
-		});
+		document.addEventListener('click', this.navButtonEvents);
 	}
 	static navButtonEvents(e) {
 		if (e.target.classList.contains('navButton')) {
 			console.log(e);
-			console.log(e.target.textContent);
+			console.log(e.target.classList);
+			// console.log(e.target.textContent);
 			const targetName = e.target.textContent;
 			// console.log(targetName);
 			// const title = document.querySelector('.title');
@@ -47,6 +46,7 @@ export default class Events {
 			// 	});
 			// }
 		}
+		return;
 	}
 	//! </ content Buttons > !\\
 }

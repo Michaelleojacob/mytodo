@@ -29,7 +29,7 @@ export default class AddProjectsToUI {
 			return (x = domFactory.elementWithMultipleClasses({
 				elementName: trimName,
 				type: 'button',
-				classes: ['navButton', trimName],
+				classes: ['navButton', 'sortByFrom', trimName],
 				text: x.name,
 				parent: this.projectsWrapper,
 			}));
