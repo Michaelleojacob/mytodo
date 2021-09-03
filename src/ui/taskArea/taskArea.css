@@ -1,0 +1,20 @@
+.taskWrapper {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	padding: 10px;
+	margin: 5px;
+	width: 300px;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+}
+.renderTasks {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+}
