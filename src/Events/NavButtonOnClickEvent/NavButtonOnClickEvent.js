@@ -14,26 +14,33 @@ export default class NavButtonEvent {
 	}
 	static navButtonLogic(e) {
 		if (e.target.classList.length === 0) return;
+		const clickTarget = e.target.textContent.trim();
 		if (e.target.classList.contains('sortByTime')) {
-			// NavButtonEvent.renderTasksLogic(e, 'date', '5/5/2021');
 			removeAllChildNodes(NavButtonEvent.renderTasks);
-			const plsDelete = domFactory.domElement({
-				classes: ['testingOnly', 'removeLater'],
-				text: `these buttons don't render tasks yet. This will be a feature in a future update`,
-			});
-			NavButtonEvent.renderTasks.appendChild(plsDelete);
+			NavButtonEvent.handleSortByTime();
 		}
 		if (e.target.classList.contains('sortByFrom')) {
-			const clickTarget = e.target.textContent.trim();
-			NavButtonEvent.renderTasksLogic(e, 'from', clickTarget, false);
+			removeAllChildNodes(NavButtonEvent.renderTasks);
+			NavButtonEvent.renderTasksLogic(e, 'from', clickTarget, true);
 		}
+	}
+
+	static handleSortByTime() {
+		const plsDelete = domFactory.domElement({
+			classes: ['testingOnly', 'removeLater'],
+			text: `these buttons don't render tasks yet. This will be a feature in a future update`,
+		});
+		NavButtonEvent.renderTasks.appendChild(plsDelete);
 	}
 
 	static renderTasksLogic(e, property, sortBy, renderButtonTorF) {
 		const storeTarget = e.target.textContent;
 		this.title.textContent = storeTarget;
-		removeAllChildNodes(this.renderTasks);
 		const myArr = Storage.getAndFilterTodos(property, sortBy);
+		let taskOrProjTask;
+		e.target.classList.contains('all')
+			? (taskOrProjTask = 'newTask')
+			: (taskOrProjTask = 'newProjTask');
 		for (let item of myArr) {
 			const task = domFactory.domElement({
 				type: 'button',
@@ -42,10 +49,10 @@ export default class NavButtonEvent {
 			});
 			this.renderTasks.appendChild(task);
 		}
-		if (renderButtonTorF === false) {
+		if (renderButtonTorF) {
 			const newButton = domFactory.domElement({
 				type: 'button',
-				classes: ['addNewTask'],
+				classes: [taskOrProjTask, 'closeOnClick', 'newItemButton'],
 				text: '+ new task',
 			});
 			this.renderTasks.appendChild(newButton);
