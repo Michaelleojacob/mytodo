@@ -1,3 +1,5 @@
 export default class NewItemEvent {
-	static init() {}
+	static init() {
+		console.log('hello');
+	}
 }
