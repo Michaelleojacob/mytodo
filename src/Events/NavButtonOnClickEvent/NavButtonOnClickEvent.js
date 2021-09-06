@@ -12,6 +12,12 @@ export default class NavButtonEvent {
 		this.title = document.querySelector('.tTitle');
 		this.renderTasks = document.querySelector('.renderTasks');
 	}
+	static items = [
+		{ name: 'all', sortByProperty: 'from', filterBy: '' },
+		{ name: 'runescape', sortByProperty: 'from', filterBy: 'runescape' },
+		{ name: 'week', sortByProperty: 'date', filterBy: '5/5/2021' },
+	];
+
 	static navButtonLogic(e) {
 		if (e.target.classList.length === 0) return;
 		const clickTarget = e.target.textContent.trim();
@@ -21,7 +27,7 @@ export default class NavButtonEvent {
 		}
 		if (e.target.classList.contains('sortByFrom')) {
 			removeAllChildNodes(NavButtonEvent.renderTasks);
-			NavButtonEvent.renderTasksLogic(e, 'from', clickTarget, true);
+			// NavButtonEvent.renderTasksLogic(e, 'from', clickTarget, true);
 		}
 	}
 
@@ -33,14 +39,8 @@ export default class NavButtonEvent {
 		NavButtonEvent.renderTasks.appendChild(plsDelete);
 	}
 
-	static renderTasksLogic(e, property, sortBy, renderButtonTorF) {
-		const storeTarget = e.target.textContent;
-		this.title.textContent = storeTarget;
+	static renderAndAppendTasks(property, sortBy) {
 		const myArr = Storage.getAndFilterTodos(property, sortBy);
-		let taskOrProjTask;
-		e.target.classList.contains('all')
-			? (taskOrProjTask = 'newTask')
-			: (taskOrProjTask = 'newProjTask');
 		for (let item of myArr) {
 			const task = domFactory.domElement({
 				type: 'button',
@@ -49,6 +49,27 @@ export default class NavButtonEvent {
 			});
 			this.renderTasks.appendChild(task);
 		}
+	}
+
+	static renderTasksLogic(e, property, sortBy, renderButtonTorF) {
+		// < cache dom aspects > \\
+		const storeTarget = e.target.textContent;
+		this.title.textContent = storeTarget;
+		// </ cache dom aspects > \\
+
+		// < initiate myArr holding all relevant tasks > \\
+		// </ initiate myArr holding all relevant tasks > \\
+
+		// < ternary for getting a variable, to see if the content change will be a new task, or a new project task > \\
+		let taskOrProjTask;
+		e.target.classList.contains('all')
+			? (taskOrProjTask = 'newTask')
+			: (taskOrProjTask = 'newProjTask');
+		// </ ternary for getting a variable, to see if the content change will be a new task, or a new project task > \\
+
+		NavButtonEvent.renderAndAppendTasks(property, sortBy);
+
+		// < (all/projects) = yes'+ add' button. (sortByTime) = no '+ add' button
 		if (renderButtonTorF) {
 			const newButton = domFactory.domElement({
 				type: 'button',
@@ -57,5 +78,6 @@ export default class NavButtonEvent {
 			});
 			this.renderTasks.appendChild(newButton);
 		}
+		// </ (all/projects) = yes'+ add' button. (sortByTime) = no '+ add' button
 	}
 }

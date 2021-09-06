@@ -13,15 +13,14 @@ export default class AllTodayWeekMonth {
 			parent: this.parent,
 		}));
 	}
+	static items = [
+		{ name: 'all', classes: ['sortByFrom'] },
+		{ name: 'today', classes: ['sortByTime'] },
+		{ name: 'week', classes: ['sortByTime'] },
+		{ name: 'month', classes: ['sortByTime'] },
+	];
 	static allTodayMonth() {
-		const items = [
-			{ name: 'all', classes: ['sortByFrom'] },
-			{ name: 'today', classes: ['sortByTime'] },
-			{ name: 'week', classes: ['sortByTime'] },
-			{ name: 'month', classes: ['sortByTime'] },
-		];
-
-		items.forEach(({ name, classes }) => {
+		AllTodayWeekMonth.items.forEach(({ name, classes }) => {
 			const element = domFactory.elementWithMultipleClasses({
 				elementName: name,
 				type: 'button',
