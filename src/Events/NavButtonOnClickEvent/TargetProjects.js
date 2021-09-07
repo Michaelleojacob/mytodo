@@ -1,0 +1,41 @@
+import domFactory from '../../domFactory/domFactory';
+import removeAllChildNodes from '../../removeAllChildNodes/removeAllChildNodes';
+import Storage from '../../Storage/Storage';
+
+export default class TargetProjects {
+	static init() {
+		this.cacheDom();
+		this.projectClickedOn();
+	}
+	static cacheDom() {
+		this.title = document.querySelector('.tTitle');
+		this.renderTasks = document.querySelector('.renderTasks');
+		this.projectsWrapper = document.querySelector('.projectsWrapper');
+	}
+
+	static projectClickedOn() {
+		this.projectsWrapper.addEventListener('click', this.handleProjectClickedOn);
+	}
+	static handleProjectClickedOn = e => {
+		if (e.target.classList.contains('projTask')) {
+			const varTitle = e.target.textContent;
+			this.title.textContent = varTitle;
+			removeAllChildNodes(this.renderTasks);
+			const arr = Storage.getAndFilterTodos('from', varTitle);
+			for (let x of arr) {
+				const element = domFactory.domElement({
+					type: 'button',
+					classes: [x.name, 'tasks'],
+					text: x.name,
+				});
+				this.renderTasks.appendChild(element);
+			}
+			this.newTaskButton = domFactory.domElement({
+				type: 'button',
+				classes: ['closeOnClick', 'newProjTask', 'newItem'],
+				text: `+ new task`,
+			});
+			this.renderTasks.appendChild(this.newTaskButton);
+		}
+	};
+}

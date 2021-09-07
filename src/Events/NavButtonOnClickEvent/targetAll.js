@@ -16,10 +16,9 @@ export default class TargetAll {
 	static allClickedOn() {
 		this.all.addEventListener('click', this.handleAllClick);
 	}
-	static handleAllClick() {
-		const that = TargetAll;
-		that.title.textContent = 'all';
-		removeAllChildNodes(that.renderTasks);
+	static handleAllClick = e => {
+		this.title.textContent = 'all';
+		removeAllChildNodes(this.renderTasks);
 		const arr = Storage.getTodos();
 		for (let x of arr) {
 			const element = domFactory.domElement({
@@ -27,13 +26,13 @@ export default class TargetAll {
 				classes: [x.name, 'tasks'],
 				text: x.name,
 			});
-			that.renderTasks.appendChild(element);
+			this.renderTasks.appendChild(element);
 		}
-		that.newTaskButton = domFactory.domElement({
+		this.newTaskButton = domFactory.domElement({
 			type: 'button',
 			classes: ['closeOnClick', 'newTask', 'newItem'],
 			text: `+ new task`,
 		});
-		that.renderTasks.appendChild(that.newTaskButton);
-	}
+		this.renderTasks.appendChild(this.newTaskButton);
+	};
 }
