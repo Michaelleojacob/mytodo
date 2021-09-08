@@ -1,6 +1,6 @@
 import NavEvent from './navEvent/navEvent';
 import NavButtonEvent from './NavButtonOnClickEvent/NavButtonOnClickEvent';
-import NewItemEvent from './createNewItemButton/createNewItemEvent';
+import NewItemEvent from './newItemEvent/NewItemEvent';
 
 export default class Events {
 	static init() {

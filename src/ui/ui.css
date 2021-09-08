@@ -53,3 +53,10 @@
 button {
 	max-width: fit-content;
 }
+
+.newButtonWrapper {
+	width: inherit;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

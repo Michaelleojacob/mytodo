@@ -36,13 +36,17 @@ export default class UI {
 	}
 	//! might get rid of this
 	static renderNewProjectButton() {
-		return (this.newProjectButton = domFactory.elementWithMultipleClasses({
-			elementName: this.newProjectButton,
-			type: 'button',
-			classes: ['newProj', 'closeOnClick'],
-			text: `+ add`,
-			parent: this.navWrap,
-		}));
+		this.newProjectButton = domFactory.domElement({
+			classes: ['newButtonWrapper', 'projectButtonWrapper'],
+			children: [
+				domFactory.domElement({
+					type: 'button',
+					text: '+ new project',
+					classes: ['newItem', 'newProj', 'closeOnClick'],
+				}),
+			],
+		});
+		this.navWrap.appendChild(this.newProjectButton);
 	}
 	static tasks() {
 		TaskArea.init(this.parent);

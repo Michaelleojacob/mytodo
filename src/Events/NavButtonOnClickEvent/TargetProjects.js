@@ -19,6 +19,7 @@ export default class TargetProjects {
 	static handleProjectClickedOn = e => {
 		if (e.target.classList.contains('projTask')) {
 			const varTitle = e.target.textContent;
+
 			this.title.textContent = varTitle;
 			removeAllChildNodes(this.renderTasks);
 			const arr = Storage.getAndFilterTodos('from', varTitle);
