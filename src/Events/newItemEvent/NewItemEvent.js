@@ -1,31 +1,13 @@
 import domFactory from '../../domFactory/domFactory';
+import toggleDisplay from '../toggleDisplay/toggleDisplay';
 
 export default class NewItemEvent {
 	static init(parent) {
 		this.parent = parent;
 		this.createNewItemInputDomTree();
-		this.cacheDom();
+		this.newItemButtonToListenFor();
 		this.cacheAndAddListener();
 	}
-	static cacheDom() {
-		this.newProjectFormWrap = document.querySelector('.newProjectFormWrap');
-		console.log(this.newProjectFormWrap);
-	}
-	static cacheAndAddListener() {
-		this.parent.addEventListener('click', e => {
-			console.log(e);
-			console.log(this.newProjectFormWrap);
-			this.toggleDisplay(this.newProjectFormWrap);
-		});
-	}
-	static toggleDisplay(element) {
-		if (element.style.display === 'none') {
-			element.style.display = 'flex';
-		} else {
-			element.style.display = 'none';
-		}
-	}
-
 	static createNewItemInputDomTree() {
 		this.projectInput = domFactory.domElement({
 			classes: ['newProjectFormWrap'],
@@ -44,6 +26,7 @@ export default class NewItemEvent {
 		this.inputForm = document.querySelector('#newProjectForm');
 		this.inputForm.addEventListener('submit', e => {
 			e.preventDefault();
+			console.log(e);
 		});
 	}
 	static subTreeInput(myplaceholder) {
@@ -66,5 +49,18 @@ export default class NewItemEvent {
 				}),
 			],
 		}));
+	}
+	static newItemButtonToListenFor() {
+		this.newProjectFormWrap = document.querySelector('.newProjectFormWrap');
+		this.newProjectFormWrap.setAttribute('style', 'display:none');
+		// this.projectInput.setAttribute('style', 'display:none');
+	}
+	static cacheAndAddListener() {
+		this.parentButton = document.querySelector('.newProj');
+		console.log(this.parent);
+		const that = NewItemEvent;
+		this.parentButton.addEventListener('click', e => {
+			toggleDisplay(this.newProjectFormWrap);
+		});
 	}
 }

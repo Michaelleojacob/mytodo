@@ -36,19 +36,20 @@ export default class UI {
 		AddProjectsToUI.init(this.navWrap);
 	}
 	//! might get rid of this
+	static makeButton() {
+		return (this.newProjButton = domFactory.domElement({
+			type: 'button',
+			text: '+ new project',
+			classes: ['newItem', 'newProj', 'closeOnClick'],
+		}));
+	}
 	static renderNewProjectButton() {
-		this.newProjectButton = domFactory.domElement({
+		this.newProjectButtonWrapper = domFactory.domElement({
 			classes: ['newButtonWrapper', 'projectButtonWrapper'],
-			children: [
-				domFactory.domElement({
-					type: 'button',
-					text: '+ new project',
-					classes: ['newItem', 'newProj', 'closeOnClick'],
-				}),
-			],
+			children: [this.makeButton()],
 		});
-		this.navWrap.appendChild(this.newProjectButton);
-		NewItemEvent.init(this.newProjectButton);
+		this.navWrap.appendChild(this.newProjectButtonWrapper);
+		NewItemEvent.init(this.newProjectButtonWrapper);
 	}
 	static tasks() {
 		TaskArea.init(this.parent);
