@@ -1,20 +1,16 @@
-import NavEvent from './navEvent/navEvent';
+import closeNavMenu from './closeNavMenu/closeNavMenu';
 import NavButtonEvent from './NavButtonOnClickEvent/NavButtonOnClickEvent';
 import NewItemEvent from './newItemEvent/NewItemEvent';
 
 export default class Events {
 	static init() {
-		this.handleNavEvent();
+		this.handlecCloseNavMenu();
 		this.handleNavButtonEvent();
-		this.handleNewItemEvent();
 	}
-	static handleNavEvent() {
-		NavEvent.closeNavMenu();
+	static handlecCloseNavMenu() {
+		closeNavMenu.closeNavMenu();
 	}
 	static handleNavButtonEvent() {
 		NavButtonEvent.handleNavDelegation();
-	}
-	static handleNewItemEvent() {
-		NewItemEvent.init();
 	}
 }

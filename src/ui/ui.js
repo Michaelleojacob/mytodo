@@ -4,6 +4,7 @@ import Header from './header/header';
 import AllTodayWeekMonth from '../ui/navMenu/allTodayWeekMonth/allTodayWeekMonth';
 import AddProjectsToUI from '../ui/navMenu/projects/projects';
 import TaskArea from './taskArea/taskArea';
+import NewItemEvent from '../Events/newItemEvent/NewItemEvent';
 
 export default class UI {
 	static init() {
@@ -47,6 +48,7 @@ export default class UI {
 			],
 		});
 		this.navWrap.appendChild(this.newProjectButton);
+		NewItemEvent.init(this.newProjectButton);
 	}
 	static tasks() {
 		TaskArea.init(this.parent);

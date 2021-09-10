@@ -1,14 +1,16 @@
-export default class NavEvent {
-	static closeNavMenu() {
-		const burger = document.querySelector('.burger');
-		burger.addEventListener('click', this.burgerEvent);
-	}
-	static burgerEvent() {
-		const navMenu = document.querySelector('.navWrap');
-		if (navMenu.style.display === 'none') {
-			navMenu.style.display = 'flex';
-		} else {
-			navMenu.style.display = 'none';
-		}
-	}
-}
+// export default class NavEvent {
+// 	static closeNavMenu() {
+// 		const burger = document.querySelector('.burger');
+// 		const navMenu = document.querySelector('.navWrap');
+// 		burger.addEventListener('click', e => {
+// 			this.toggleDisplay(navMenu);
+// 		});
+// 	}
+// 	static toggleDisplay(element) {
+// 		if (element.style.display === 'none') {
+// 			element.style.display = 'flex';
+// 		} else {
+// 			element.style.display = 'none';
+// 		}
+// 	}
+// }

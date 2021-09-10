@@ -1,35 +1,70 @@
 import domFactory from '../../domFactory/domFactory';
 
 export default class NewItemEvent {
-	static init() {
+	static init(parent) {
+		this.parent = parent;
+		this.createNewItemInputDomTree();
 		this.cacheDom();
-		this.testing();
+		this.cacheAndAddListener();
 	}
 	static cacheDom() {
-		this.newProjectBtn = document.querySelector('.projectButtonWrapper');
-		this.newProj = document.querySelector('.newProj');
+		this.newProjectFormWrap = document.querySelector('.newProjectFormWrap');
+		console.log(this.newProjectFormWrap);
 	}
-	static testing() {
-		this.newProj.addEventListener('click', this.myfunction);
+	static cacheAndAddListener() {
+		this.parent.addEventListener('click', e => {
+			console.log(e);
+			console.log(this.newProjectFormWrap);
+			this.toggleDisplay(this.newProjectFormWrap);
+		});
 	}
-	static myfunction = e => {
-		// console.log(e);
-		// console.log(e.target.parentNode);
-		// console.log(e.target.parentNode.childElementCount);
-		// if (e.target.parentNode.childElementCount > 1) return;
+	static toggleDisplay(element) {
+		if (element.style.display === 'none') {
+			element.style.display = 'flex';
+		} else {
+			element.style.display = 'none';
+		}
+	}
+
+	static createNewItemInputDomTree() {
 		this.projectInput = domFactory.domElement({
-			type: 'form',
-			classes: ['idkyet'],
+			classes: ['newProjectFormWrap'],
 			children: [
 				domFactory.domElement({
-					type: 'input',
+					type: 'form',
+					attributes: { id: 'newProjectForm' },
+					children: [this.subTreeInput('new project'), this.subTreeButtons()],
 				}),
+			],
+		});
+		this.parent.appendChild(this.projectInput);
+		this.preventDefaultSubmit();
+	}
+	static preventDefaultSubmit() {
+		this.inputForm = document.querySelector('#newProjectForm');
+		this.inputForm.addEventListener('submit', e => {
+			e.preventDefault();
+		});
+	}
+	static subTreeInput(myplaceholder) {
+		return (this.input = domFactory.domElement({
+			type: 'input',
+			attributes: { placeholder: myplaceholder },
+		}));
+	}
+	static subTreeButtons() {
+		return (this.buttons = domFactory.domElement({
+			classes: ['formButtonWrapper'],
+			children: [
 				domFactory.domElement({
 					type: 'button',
 					text: 'submit',
 				}),
+				domFactory.domElement({
+					type: 'button',
+					text: 'cancel',
+				}),
 			],
-		});
-		this.newProjectBtn.appendChild(this.projectInput);
-	};
+		}));
+	}
 }
