@@ -47,8 +47,13 @@ export default class TargetProjects {
 				this.renderTasks.appendChild(element);
 			}
 			this.makeNewItemButton();
-			this.makeNewProjTask = NewItemEvent.makeEntireSubtree(this.buttonWrapper);
-			NewItemEvent.DOMTreePreventDefault(this.makeNewProjTask);
+			this.newItemForm = NewItemEvent.makeEntireSubtree(this.buttonWrapper);
+			NewItemEvent.getFormInput(this.newItemForm);
+			NewItemEvent.listenNewItemButtonToOpenForm({
+				elementListening: this.newTaskButton,
+				toggler: this.newItemForm,
+			});
 		}
 	};
+	static;
 }

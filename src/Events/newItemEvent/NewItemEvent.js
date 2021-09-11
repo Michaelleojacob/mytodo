@@ -34,25 +34,21 @@ export default class NewItemEvent {
 		this.parent.appendChild(this.projectInput);
 		return this.projectInput;
 	}
-	static DOMTreePreventDefault(element) {
+	static getFormInput(element) {
 		console.log(element);
 		element.addEventListener('submit', e => {
 			e.preventDefault();
-			if (e.submitter.textContent === 'cancel') return;
+			if (e.submitter.textContent === 'cancel') return toggleDisplay(element);
+			if (e.target[0].value === '') return;
 			console.log(e);
 			console.log(e.target[0].value);
 			e.target[0].value = '';
+			return e.target[0].value;
 		});
 	}
-	// static eventCancelForm() {
-	// 	this.cancelBtn.addEventListener('click', () => {
-	// 		toggleDisplay(this.startTree);
-	// 	});
-	// }
-	// static listenForParentClick() {
-	// 	this.parent.childNodes[0].addEventListener('click', () => {
-	// 		toggleDisplay(this.startTree);
-	// 		if (this.startTree.style.display === 'flex') this.input.focus();
-	// 	});
-	// }
+	static listenNewItemButtonToOpenForm({ elementListening, toggler }) {
+		elementListening.addEventListener('click', e => {
+			toggleDisplay(toggler);
+		});
+	}
 }

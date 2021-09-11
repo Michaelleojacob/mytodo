@@ -44,6 +44,11 @@ export default class TargetAll {
 			this.renderTasks.appendChild(element);
 		}
 		this.makeNewItemButton();
-		NewItemEvent.makeEntireSubtree(this.buttonWrapper);
+		this.newItemForm = NewItemEvent.makeEntireSubtree(this.buttonWrapper);
+		NewItemEvent.getFormInput(this.newItemForm);
+		NewItemEvent.listenNewItemButtonToOpenForm({
+			elementListening: this.newTaskButton,
+			toggler: this.newItemForm,
+		});
 	};
 }

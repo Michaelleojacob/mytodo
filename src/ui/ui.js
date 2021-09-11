@@ -5,6 +5,7 @@ import AllTodayWeekMonth from '../ui/navMenu/allTodayWeekMonth/allTodayWeekMonth
 import AddProjectsToUI from '../ui/navMenu/projects/projects';
 import TaskArea from './taskArea/taskArea';
 import NewItemEvent from '../Events/newItemEvent/NewItemEvent';
+import toggleDisplay from '../Events/toggleDisplay/toggleDisplay';
 
 export default class UI {
 	static init() {
@@ -12,6 +13,7 @@ export default class UI {
 		this.header();
 		this.navMenu();
 		this.tasks();
+		this.listenNewItemButtonToOpenForm();
 	}
 	static header() {
 		Header.init(this.parent);
@@ -49,12 +51,18 @@ export default class UI {
 			children: [this.makeButton()],
 		});
 		this.navWrap.appendChild(this.newProjectButtonWrapper);
-		this.makeNewProject = NewItemEvent.makeEntireSubtree(
+		this.newItemForm = NewItemEvent.makeEntireSubtree(
 			this.newProjectButtonWrapper
 		);
-		NewItemEvent.DOMTreePreventDefault(this.makeNewProject);
+		NewItemEvent.getFormInput(this.newItemForm);
 	}
 	static tasks() {
 		TaskArea.init(this.parent);
+	}
+	static listenNewItemButtonToOpenForm() {
+		NewItemEvent.listenNewItemButtonToOpenForm({
+			elementListening: this.newProjButton,
+			toggler: this.newItemForm,
+		});
 	}
 }
