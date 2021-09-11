@@ -2,65 +2,69 @@ import domFactory from '../../domFactory/domFactory';
 import toggleDisplay from '../toggleDisplay/toggleDisplay';
 
 export default class NewItemEvent {
-	static init(parent) {
+	static makeEntireSubtree({ parent }) {
 		this.parent = parent;
-		this.createNewItemInputDomTree();
-		this.newItemButtonToListenFor();
-		this.cacheAndAddListener();
+		this.formWrapper();
+		this.createForm();
+		this.createInput();
+		this.createButtonWrapper();
+		this.submitButton();
+		this.cancelButton();
+		this.DOMTreePreventDefault();
+		this.listenForParentClick();
+		this.eventCancelForm();
 	}
-	static createNewItemInputDomTree() {
-		this.projectInput = domFactory.domElement({
-			classes: ['newProjectFormWrap'],
-			children: [
-				domFactory.domElement({
-					type: 'form',
-					attributes: { id: 'newProjectForm' },
-					children: [this.subTreeInput('new project'), this.subTreeButtons()],
-				}),
-			],
+	static formWrapper() {
+		this.startTree = domFactory.domElement({});
+		this.parent.appendChild(this.startTree);
+	}
+	static createForm() {
+		this.form = domFactory.domElement({
+			type: 'form',
 		});
-		this.parent.appendChild(this.projectInput);
-		this.preventDefaultSubmit();
+		this.startTree.appendChild(this.form);
 	}
-	static preventDefaultSubmit() {
-		this.inputForm = document.querySelector('#newProjectForm');
-		this.inputForm.addEventListener('submit', e => {
+	static createInput() {
+		this.input = domFactory.domElement({
+			type: 'input',
+			attributes: { placeholder: 'text' },
+		});
+		this.form.appendChild(this.input);
+	}
+	static createButtonWrapper() {
+		this.btnWrapper = domFactory.domElement({});
+		this.form.appendChild(this.btnWrapper);
+	}
+	static submitButton() {
+		this.submitBtn = domFactory.domElement({
+			type: 'button',
+			text: 'submit',
+		});
+		this.btnWrapper.appendChild(this.submitBtn);
+	}
+	static cancelButton() {
+		this.cancelBtn = domFactory.domElement({
+			type: 'button',
+			text: 'cancel',
+		});
+		this.btnWrapper.appendChild(this.cancelBtn);
+	}
+	static DOMTreePreventDefault() {
+		this.form.addEventListener('submit', e => {
 			e.preventDefault();
+			if (e.submitter.textContent === 'cancel') return;
 			console.log(e);
 		});
 	}
-	static subTreeInput(myplaceholder) {
-		return (this.input = domFactory.domElement({
-			type: 'input',
-			attributes: { placeholder: myplaceholder },
-		}));
+	static eventCancelForm() {
+		this.cancelBtn.addEventListener('click', e => {
+			toggleDisplay(this.startTree);
+		});
 	}
-	static subTreeButtons() {
-		return (this.buttons = domFactory.domElement({
-			classes: ['formButtonWrapper'],
-			children: [
-				domFactory.domElement({
-					type: 'button',
-					text: 'submit',
-				}),
-				domFactory.domElement({
-					type: 'button',
-					text: 'cancel',
-				}),
-			],
-		}));
-	}
-	static newItemButtonToListenFor() {
-		this.newProjectFormWrap = document.querySelector('.newProjectFormWrap');
-		this.newProjectFormWrap.setAttribute('style', 'display:none');
-		// this.projectInput.setAttribute('style', 'display:none');
-	}
-	static cacheAndAddListener() {
-		this.parentButton = document.querySelector('.newProj');
-		console.log(this.parent);
-		const that = NewItemEvent;
-		this.parentButton.addEventListener('click', e => {
-			toggleDisplay(this.newProjectFormWrap);
+	static listenForParentClick() {
+		this.parent.childNodes[0].addEventListener('click', e => {
+			toggleDisplay(this.startTree);
+			if (this.startTree.style.display === 'flex') this.input.focus();
 		});
 	}
 }
