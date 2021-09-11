@@ -17,6 +17,20 @@ export default class TargetAll {
 	static allClickedOn() {
 		this.all.addEventListener('click', this.handleAllClick);
 	}
+	static makeNewItemButton() {
+		this.buttonWrapper = domFactory.domElement({
+			attributes: { id: 'newItemAllTasksWrapper' },
+			children: [
+				(this.newTaskButton = domFactory.domElement({
+					type: 'button',
+					classes: ['closeOnClick', 'newTask', 'newItem'],
+					text: `+ new task`,
+				})),
+			],
+		});
+		this.renderTasks.appendChild(this.buttonWrapper);
+		return this.buttonWrapper, this.newTaskButton;
+	}
 	static handleAllClick = e => {
 		this.title.textContent = 'all';
 		removeAllChildNodes(this.renderTasks);
@@ -29,12 +43,7 @@ export default class TargetAll {
 			});
 			this.renderTasks.appendChild(element);
 		}
-		this.newTaskButton = domFactory.domElement({
-			type: 'button',
-			classes: ['closeOnClick', 'newTask', 'newItem'],
-			text: `+ new task`,
-		});
-		this.renderTasks.appendChild(this.newTaskButton);
-		NewItemEvent.makeEntireSubtree({ parent: this.newTaskButton });
+		this.makeNewItemButton();
+		NewItemEvent.makeEntireSubtree(this.buttonWrapper);
 	};
 }

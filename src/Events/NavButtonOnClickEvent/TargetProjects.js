@@ -1,6 +1,7 @@
 import domFactory from '../../domFactory/domFactory';
 import removeAllChildNodes from '../../removeAllChildNodes/removeAllChildNodes';
 import Storage from '../../Storage/Storage';
+import NewItemEvent from '../newItemEvent/NewItemEvent';
 
 export default class TargetProjects {
 	static init() {
@@ -15,6 +16,20 @@ export default class TargetProjects {
 
 	static projectClickedOn() {
 		this.projectsWrapper.addEventListener('click', this.handleProjectClickedOn);
+	}
+	static makeNewItemButton() {
+		this.buttonWrapper = domFactory.domElement({
+			attributes: { id: 'newItemProjTaskWrapper' },
+			children: [
+				(this.newTaskButton = domFactory.domElement({
+					type: 'button',
+					classes: ['closeOnClick', 'newProjTask', 'newItem'],
+					text: `+ new task`,
+				})),
+			],
+		});
+		this.renderTasks.appendChild(this.buttonWrapper);
+		return this.buttonWrapper, this.newTaskButton;
 	}
 	static handleProjectClickedOn = e => {
 		if (e.target.classList.contains('projTask')) {
@@ -31,12 +46,9 @@ export default class TargetProjects {
 				});
 				this.renderTasks.appendChild(element);
 			}
-			this.newTaskButton = domFactory.domElement({
-				type: 'button',
-				classes: ['closeOnClick', 'newProjTask', 'newItem'],
-				text: `+ new task`,
-			});
-			this.renderTasks.appendChild(this.newTaskButton);
+			this.makeNewItemButton();
+			this.makeNewProjTask = NewItemEvent.makeEntireSubtree(this.buttonWrapper);
+			NewItemEvent.DOMTreePreventDefault(this.makeNewProjTask);
 		}
 	};
 }

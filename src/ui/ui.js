@@ -49,7 +49,10 @@ export default class UI {
 			children: [this.makeButton()],
 		});
 		this.navWrap.appendChild(this.newProjectButtonWrapper);
-		NewItemEvent.makeEntireSubtree({ parent: this.newProjectButtonWrapper });
+		this.makeNewProject = NewItemEvent.makeEntireSubtree(
+			this.newProjectButtonWrapper
+		);
+		NewItemEvent.DOMTreePreventDefault(this.makeNewProject);
 	}
 	static tasks() {
 		TaskArea.init(this.parent);
