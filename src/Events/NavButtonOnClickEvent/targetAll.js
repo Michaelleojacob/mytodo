@@ -1,6 +1,7 @@
 import domFactory from '../../domFactory/domFactory';
 import removeAllChildNodes from '../../removeAllChildNodes/removeAllChildNodes';
 import Storage from '../../Storage/Storage';
+import NewItemEvent from '../newItemEvent/NewItemEvent';
 
 export default class TargetAll {
 	static init() {
@@ -34,5 +35,6 @@ export default class TargetAll {
 			text: `+ new task`,
 		});
 		this.renderTasks.appendChild(this.newTaskButton);
+		NewItemEvent.makeEntireSubtree({ parent: this.newTaskButton });
 	};
 }

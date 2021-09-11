@@ -15,7 +15,11 @@ export default class NewItemEvent {
 		this.eventCancelForm();
 	}
 	static formWrapper() {
-		this.startTree = domFactory.domElement({});
+		this.startTree = domFactory.domElement({
+			attributes: {
+				style: 'display:none',
+			},
+		});
 		this.parent.appendChild(this.startTree);
 	}
 	static createForm() {
@@ -54,15 +58,16 @@ export default class NewItemEvent {
 			e.preventDefault();
 			if (e.submitter.textContent === 'cancel') return;
 			console.log(e);
+			this.input.value = '';
 		});
 	}
 	static eventCancelForm() {
-		this.cancelBtn.addEventListener('click', e => {
+		this.cancelBtn.addEventListener('click', () => {
 			toggleDisplay(this.startTree);
 		});
 	}
 	static listenForParentClick() {
-		this.parent.childNodes[0].addEventListener('click', e => {
+		this.parent.childNodes[0].addEventListener('click', () => {
 			toggleDisplay(this.startTree);
 			if (this.startTree.style.display === 'flex') this.input.focus();
 		});
