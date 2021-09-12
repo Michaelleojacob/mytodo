@@ -1,5 +1,6 @@
 import domFactory from '../../../domFactory/domFactory';
 import Storage from '../../../Storage/Storage';
+import NewItemEvent from '../../../Events/newItemEvent/NewItemEvent';
 
 export default class AddProjectsToUI {
 	static init(parent) {
@@ -7,6 +8,9 @@ export default class AddProjectsToUI {
 		this.renderStaticProjectText();
 		this.makeProjectsWrapper();
 		this.renderAllProjects();
+		this.renderNewProjectButton();
+		this.addInputArea();
+		this.listenNewItemButtonToOpenForm();
 	}
 
 	static renderStaticProjectText() {
@@ -33,6 +37,32 @@ export default class AddProjectsToUI {
 				text: x.name,
 				parent: this.projectsWrapper,
 			}));
+		});
+	}
+	static renderNewProjectButton() {
+		this.newProjectButtonWrapper = domFactory.domElement({
+			classes: ['newButtonWrapper', 'projectButtonWrapper'],
+			children: [
+				(this.newProjButton = domFactory.domElement({
+					type: 'button',
+					text: '+ new project',
+					classes: ['newItem', 'newProj', 'closeOnClick'],
+				})),
+			],
+		});
+		this.parent.appendChild(this.newProjectButtonWrapper);
+	}
+	static addInputArea() {
+		this.newItemForm = NewItemEvent.formDOMTree(
+			this.newProjectButtonWrapper,
+			'newproject'
+		);
+		NewItemEvent.getFormInput(this.newItemForm);
+	}
+	static listenNewItemButtonToOpenForm() {
+		NewItemEvent.listenNewItemButtonToOpenForm({
+			elementListening: this.newProjButton,
+			toggler: this.newItemForm,
 		});
 	}
 }

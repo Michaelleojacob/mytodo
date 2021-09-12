@@ -18,6 +18,23 @@ export default class TargetAll {
 	static allClickedOn() {
 		this.all.addEventListener('click', this.handleAllClick);
 	}
+
+	static handleAllClick = e => {
+		this.title.textContent = 'all';
+		removeAllChildNodes(this.renderTasks);
+		const arr = Storage.getTodos();
+		for (let x of arr) {
+			const element = domFactory.domElement({
+				type: 'button',
+				classes: [x.name, 'tasks'],
+				text: x.name,
+			});
+			this.renderTasks.appendChild(element);
+		}
+		this.makeNewItemButton();
+		this.addInputArea();
+		this.listenForNewItemButtonClick();
+	};
 	static makeNewItemButton() {
 		this.buttonWrapper = domFactory.domElement({
 			attributes: { id: 'newItemAllTasksWrapper' },
@@ -32,29 +49,19 @@ export default class TargetAll {
 		this.renderTasks.appendChild(this.buttonWrapper);
 		return this.buttonWrapper, this.newTaskButton;
 	}
-	static handleAllClick = e => {
-		this.title.textContent = 'all';
-		removeAllChildNodes(this.renderTasks);
-		const arr = Storage.getTodos();
-		for (let x of arr) {
-			const element = domFactory.domElement({
-				type: 'button',
-				classes: [x.name, 'tasks'],
-				text: x.name,
-			});
-			this.renderTasks.appendChild(element);
-		}
-		this.makeNewItemButton();
+	static addInputArea() {
 		this.newItemForm = NewItemEvent.formDOMTree(
 			this.buttonWrapper,
 			'newAllTask'
 		);
 		NewItemEvent.getFormInput(this.newItemForm);
+	}
+	static listenForNewItemButtonClick() {
 		NewItemEvent.listenNewItemButtonToOpenForm({
 			elementListening: this.newTaskButton,
 			toggler: this.newItemForm,
 		});
-	};
+	}
 	static simulateAllWasClicked() {
 		document.addEventListener('DOMContentLoaded', () => {
 			this.all.click();

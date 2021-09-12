@@ -42,7 +42,6 @@ export default class NewItemEvent {
 			e.target[0].value = '';
 			console.log(e);
 			console.log(`userinput: ${userInput}`);
-			return userInput;
 		});
 	}
 	static listenNewItemButtonToOpenForm({ elementListening, toggler }) {

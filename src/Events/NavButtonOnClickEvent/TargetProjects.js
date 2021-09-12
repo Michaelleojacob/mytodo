@@ -17,6 +17,26 @@ export default class TargetProjects {
 	static projectClickedOn() {
 		this.projectsWrapper.addEventListener('click', this.handleProjectClickedOn);
 	}
+
+	static handleProjectClickedOn = e => {
+		if (e.target.classList.contains('projTask')) {
+			const varTitle = e.target.textContent;
+			this.title.textContent = varTitle;
+			removeAllChildNodes(this.renderTasks);
+			const arr = Storage.getAndFilterTodos('from', varTitle);
+			for (let x of arr) {
+				const element = domFactory.domElement({
+					type: 'button',
+					classes: [x.name, 'tasks'],
+					text: x.name,
+				});
+				this.renderTasks.appendChild(element);
+			}
+			this.makeNewItemButton();
+			this.addInputArea();
+			this.listenForNewItemButtonClick();
+		}
+	};
 	static makeNewItemButton() {
 		this.buttonWrapper = domFactory.domElement({
 			attributes: { id: 'newItemProjTaskWrapper' },
@@ -31,32 +51,17 @@ export default class TargetProjects {
 		this.renderTasks.appendChild(this.buttonWrapper);
 		return this.buttonWrapper, this.newTaskButton;
 	}
-	static handleProjectClickedOn = e => {
-		if (e.target.classList.contains('projTask')) {
-			const varTitle = e.target.textContent;
-
-			this.title.textContent = varTitle;
-			removeAllChildNodes(this.renderTasks);
-			const arr = Storage.getAndFilterTodos('from', varTitle);
-			for (let x of arr) {
-				const element = domFactory.domElement({
-					type: 'button',
-					classes: [x.name, 'tasks'],
-					text: x.name,
-				});
-				this.renderTasks.appendChild(element);
-			}
-			this.makeNewItemButton();
-			this.newItemForm = NewItemEvent.formDOMTree(
-				this.buttonWrapper,
-				'newProjTask'
-			);
-			NewItemEvent.getFormInput(this.newItemForm);
-			NewItemEvent.listenNewItemButtonToOpenForm({
-				elementListening: this.newTaskButton,
-				toggler: this.newItemForm,
-			});
-		}
-	};
-	static;
+	static addInputArea() {
+		this.newItemForm = NewItemEvent.formDOMTree(
+			this.buttonWrapper,
+			'newProjTask'
+		);
+		NewItemEvent.getFormInput(this.newItemForm);
+	}
+	static listenForNewItemButtonClick() {
+		NewItemEvent.listenNewItemButtonToOpenForm({
+			elementListening: this.newTaskButton,
+			toggler: this.newItemForm,
+		});
+	}
 }
