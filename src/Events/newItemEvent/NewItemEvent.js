@@ -1,5 +1,8 @@
 import domFactory from '../../domFactory/domFactory';
 import toggleDisplay from '../toggleDisplay/toggleDisplay';
+import Projects from '../../Projects/Projects';
+import Storage from '../../Storage/Storage';
+import AddProjectsToUI from '../../ui/navMenu/projects/projects';
 
 export default class NewItemEvent {
 	static formDOMTree(parent, myid) {
@@ -33,32 +36,38 @@ export default class NewItemEvent {
 		this.parent.appendChild(this.projectInput);
 		return this.projectInput;
 	}
+	static listenNewItemButtonToOpenForm({ elementListening, toggler }) {
+		elementListening.addEventListener('click', () => {
+			toggleDisplay(toggler);
+		});
+	}
 	static getFormInput(element) {
 		element.addEventListener('submit', e => {
 			e.preventDefault();
 			if (e.submitter.textContent === 'cancel') return toggleDisplay(element);
 			if (e.target[0].value === '') return;
-			const userInput = e.target[0].value;
-			console.log(e.target);
-			switch (e.target.id) {
-				case 'newproject':
-					console.log('new project');
-					break;
-				case 'newAllTask':
-					console.log('new all task');
-					break;
-				case 'newProjTask':
-					console.log('new project task');
-					break;
-			}
+			const userInput = e.target[0].value.trim();
+			const elementID = e.target.id;
 			e.target[0].value = '';
-			console.log(e);
-			console.log(`userinput: ${userInput}`);
+			this.delegateInput(elementID, userInput);
 		});
 	}
-	static listenNewItemButtonToOpenForm({ elementListening, toggler }) {
-		elementListening.addEventListener('click', () => {
-			toggleDisplay(toggler);
-		});
+	static delegateInput(elID, formInput) {
+		switch (elID) {
+			case 'newproject':
+				this.newProject(formInput);
+				break;
+			case 'newAllTask':
+				console.log('new all task');
+				break;
+			case 'newProjTask':
+				console.log('new project task');
+				break;
+		}
+	}
+	static newProject(input) {
+		const newProject = new Projects(input);
+		AddProjectsToUI.renderSingleProject(newProject);
+		Storage.addProject(newProject);
 	}
 }
