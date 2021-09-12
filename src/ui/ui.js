@@ -51,9 +51,11 @@ export default class UI {
 			children: [this.makeButton()],
 		});
 		this.navWrap.appendChild(this.newProjectButtonWrapper);
-		this.newItemForm = NewItemEvent.makeEntireSubtree(
-			this.newProjectButtonWrapper
+		this.newItemForm = NewItemEvent.formDOMTree(
+			this.newProjectButtonWrapper,
+			'newproject'
 		);
+		console.log(this.newItemForm);
 		NewItemEvent.getFormInput(this.newItemForm);
 	}
 	static tasks() {

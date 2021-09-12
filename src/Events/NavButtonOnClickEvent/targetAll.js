@@ -7,6 +7,7 @@ export default class TargetAll {
 	static init() {
 		this.cacheDom();
 		this.allClickedOn();
+		this.simulateAllWasClicked();
 	}
 	static cacheDom() {
 		this.all = document.querySelector('.all');
@@ -44,11 +45,19 @@ export default class TargetAll {
 			this.renderTasks.appendChild(element);
 		}
 		this.makeNewItemButton();
-		this.newItemForm = NewItemEvent.makeEntireSubtree(this.buttonWrapper);
+		this.newItemForm = NewItemEvent.formDOMTree(
+			this.buttonWrapper,
+			'newAllTask'
+		);
 		NewItemEvent.getFormInput(this.newItemForm);
 		NewItemEvent.listenNewItemButtonToOpenForm({
 			elementListening: this.newTaskButton,
 			toggler: this.newItemForm,
 		});
 	};
+	static simulateAllWasClicked() {
+		document.addEventListener('DOMContentLoaded', () => {
+			this.all.click();
+		});
+	}
 }

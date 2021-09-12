@@ -47,7 +47,10 @@ export default class TargetProjects {
 				this.renderTasks.appendChild(element);
 			}
 			this.makeNewItemButton();
-			this.newItemForm = NewItemEvent.makeEntireSubtree(this.buttonWrapper);
+			this.newItemForm = NewItemEvent.formDOMTree(
+				this.buttonWrapper,
+				'newProjTask'
+			);
 			NewItemEvent.getFormInput(this.newItemForm);
 			NewItemEvent.listenNewItemButtonToOpenForm({
 				elementListening: this.newTaskButton,

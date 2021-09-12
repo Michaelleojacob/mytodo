@@ -2,15 +2,14 @@ import domFactory from '../../domFactory/domFactory';
 import toggleDisplay from '../toggleDisplay/toggleDisplay';
 
 export default class NewItemEvent {
-	static makeEntireSubtree(parent) {
+	static formDOMTree(parent, myid) {
 		this.parent = parent;
-		return this.formDomSubtree();
-	}
-	static formDomSubtree() {
 		this.projectInput = domFactory.domElement({
+			// attributes: { style: 'display:none' },
 			children: [
 				domFactory.domElement({
 					type: 'form',
+					attributes: { id: myid },
 					children: [
 						domFactory.domElement({
 							type: 'input',
@@ -35,19 +34,19 @@ export default class NewItemEvent {
 		return this.projectInput;
 	}
 	static getFormInput(element) {
-		console.log(element);
 		element.addEventListener('submit', e => {
 			e.preventDefault();
 			if (e.submitter.textContent === 'cancel') return toggleDisplay(element);
 			if (e.target[0].value === '') return;
-			console.log(e);
-			console.log(e.target[0].value);
+			const userInput = e.target[0].value;
 			e.target[0].value = '';
-			return e.target[0].value;
+			console.log(e);
+			console.log(`userinput: ${userInput}`);
+			return userInput;
 		});
 	}
 	static listenNewItemButtonToOpenForm({ elementListening, toggler }) {
-		elementListening.addEventListener('click', e => {
+		elementListening.addEventListener('click', () => {
 			toggleDisplay(toggler);
 		});
 	}
