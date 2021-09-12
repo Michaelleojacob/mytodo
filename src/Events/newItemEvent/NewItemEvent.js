@@ -39,6 +39,18 @@ export default class NewItemEvent {
 			if (e.submitter.textContent === 'cancel') return toggleDisplay(element);
 			if (e.target[0].value === '') return;
 			const userInput = e.target[0].value;
+			console.log(e.target);
+			switch (e.target.id) {
+				case 'newproject':
+					console.log('new project');
+					break;
+				case 'newAllTask':
+					console.log('new all task');
+					break;
+				case 'newProjTask':
+					console.log('new project task');
+					break;
+			}
 			e.target[0].value = '';
 			console.log(e);
 			console.log(`userinput: ${userInput}`);
