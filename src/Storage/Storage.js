@@ -39,6 +39,15 @@ export default class Storage {
 		projects.push(project);
 		localStorage.setItem('projects', JSON.stringify(projects));
 	}
+	static removeProj(id) {
+		const projects = Storage.getProjects();
+		projects.forEach((project, index) => {
+			if (project.id === id) {
+				projects.splice(index, 1);
+			}
+		});
+		localStorage.setItem('projects', JSON.stringify(projects));
+	}
 	static getAndFilterTodos(filterFrom, filterBy) {
 		const filtered = Storage.getTodos().filter(
 			todo => todo[filterFrom] === filterBy

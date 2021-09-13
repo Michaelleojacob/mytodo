@@ -7,7 +7,7 @@ export default class TargetAll {
 	static init() {
 		this.cacheDom();
 		this.allClickedOn();
-		this.simulateAllWasClicked();
+		// this.simulateAllWasClicked();
 	}
 	static cacheDom() {
 		this.all = document.querySelector('.all');
