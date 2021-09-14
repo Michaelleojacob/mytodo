@@ -7,6 +7,8 @@ export default class IndividualTasksHTML {
 		this.makeOneTask();
 		this.makeOneTask();
 		this.makeOneTask();
+		this.checkDateThing();
+		this.addListenerToModifyName();
 	}
 	static makeOneTask() {
 		this.task = domFactory.domElement({
@@ -20,6 +22,7 @@ export default class IndividualTasksHTML {
 					children: [
 						domFactory.domElement({
 							classes: ['modifyName'],
+							attributes: { contenteditable: 'true' },
 							type: 'span',
 							text: 'name',
 						}),
@@ -29,6 +32,7 @@ export default class IndividualTasksHTML {
 						}),
 						domFactory.domElement({
 							type: 'input',
+							classes: ['dateThing'],
 							attributes: { type: 'date' },
 						}),
 					],
@@ -37,7 +41,7 @@ export default class IndividualTasksHTML {
 		});
 		this.parent.appendChild(this.task);
 		this.deleteButton();
-		this.clickToModifyName(this.task);
+		// this.clickToModifyName(this.task);
 	}
 	static deleteButton() {
 		this.deleteBtn = domFactory.domElement({
@@ -52,6 +56,39 @@ export default class IndividualTasksHTML {
 				console.log(e);
 				const newName = prompt(`pick a new name`);
 				e.target.textContent = newName;
+			}
+		});
+	}
+	static checkDateThing() {
+		this.testDate = domFactory.domElement({
+			classes: ['tdwrap'],
+			children: [
+				domFactory.domElement({
+					classes: ['testdate'],
+					type: 'input',
+					attributes: { type: 'date' },
+				}),
+			],
+		});
+		this.parent.appendChild(this.testDate);
+		this.addOnChange();
+	}
+	static addOnChange() {
+		this.testDate.addEventListener('input', e => {
+			console.log(e.target.value);
+		});
+	}
+	static addListenerToModifyName() {
+		const myNodeList = document.querySelectorAll('.modifyName');
+		const myArr = Array.from(myNodeList);
+		console.log(myArr);
+		myArr.map(x => this.endEditOnEnter(x));
+	}
+	static endEditOnEnter(element) {
+		element.addEventListener('keydown', e => {
+			if (e.key === 'Enter') {
+				e.preventDefault();
+				element.blur();
 			}
 		});
 	}
