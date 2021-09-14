@@ -19,6 +19,7 @@ export default class IndividualTasksHTML {
 					classes: ['childwrap'],
 					children: [
 						domFactory.domElement({
+							classes: ['modifyName'],
 							type: 'span',
 							text: 'name',
 						}),
@@ -36,6 +37,7 @@ export default class IndividualTasksHTML {
 		});
 		this.parent.appendChild(this.task);
 		this.deleteButton();
+		this.clickToModifyName(this.task);
 	}
 	static deleteButton() {
 		this.deleteBtn = domFactory.domElement({
@@ -43,5 +45,14 @@ export default class IndividualTasksHTML {
 			text: 'X',
 		});
 		this.task.appendChild(this.deleteBtn);
+	}
+	static clickToModifyName(element) {
+		element.addEventListener('click', e => {
+			if (e.target.classList.contains('modifyName')) {
+				console.log(e);
+				const newName = prompt(`pick a new name`);
+				e.target.textContent = newName;
+			}
+		});
 	}
 }
