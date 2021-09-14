@@ -4,6 +4,7 @@ import Header from './header/header';
 import AllTodayWeekMonth from '../ui/navMenu/allTodayWeekMonth/allTodayWeekMonth';
 import AddProjectsToUI from '../ui/navMenu/projects/projects';
 import TaskArea from './taskArea/taskArea';
+import IndividualTasksHTML from './individualTaskHTML/individualTaskHTML';
 
 export default class UI {
 	static init() {
@@ -11,6 +12,7 @@ export default class UI {
 		this.header();
 		this.navMenu();
 		this.tasks();
+		this.individualTasks();
 	}
 	static header() {
 		Header.init(this.parent);
@@ -35,5 +37,9 @@ export default class UI {
 	}
 	static tasks() {
 		TaskArea.init(this.parent);
+	}
+	//! for testing individual tasks !\\
+	static individualTasks() {
+		IndividualTasksHTML.init(this.parent);
 	}
 }
