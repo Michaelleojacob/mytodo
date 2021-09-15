@@ -4,21 +4,21 @@
 	margin-top: 2px;
 	margin-bottom: 2px;
 	box-sizing: border-box;
-	border: 1px solid white;
+	border: none;
 }
 .childwrap {
 	display: grid;
 	width: inherit;
 	grid-template-columns: 5em 5em 150px;
 	box-sizing: border-box;
-	border: 1px solid white;
+	border: none;
 }
 
 .modifyName {
 	display: flex;
-	max-width: 75px;
+	max-width: 60px;
 	box-sizing: border-box;
-	border: 1px solid white;
+	border: none;
 	overflow: clip;
 }
 
@@ -44,10 +44,14 @@
 
 .from {
 	box-sizing: border-box;
-	border: 1px solid white;
+	border: none;
 }
 
 .dateThing {
 	box-sizing: border-box;
-	border: 1px solid white;
+	border: none;
+}
+
+.deleteTask {
+	visibility: hidden;
 }

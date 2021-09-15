@@ -7,8 +7,6 @@ export default class IndividualTasksHTML {
 		this.makeOneTask();
 		this.makeOneTask();
 		this.makeOneTask();
-		this.checkDateThing();
-		this.addListenerToModifyName();
 	}
 	static makeOneTask() {
 		this.task = domFactory.domElement({
@@ -42,6 +40,8 @@ export default class IndividualTasksHTML {
 		});
 		this.parent.appendChild(this.task);
 		this.deleteButton();
+		this.modifyTaskNameListener(this.task);
+		this.showDelete(this.task);
 	}
 	static deleteButton() {
 		this.deleteBtn = domFactory.domElement({
@@ -51,44 +51,62 @@ export default class IndividualTasksHTML {
 		});
 		this.task.appendChild(this.deleteBtn);
 	}
-	static clickToModifyName(element) {
-		element.addEventListener('click', e => {
-			if (e.target.classList.contains('modifyName')) {
-				console.log(e);
-				const newName = prompt(`pick a new name`);
-				e.target.textContent = newName;
-			}
-		});
-	}
-	static checkDateThing() {
-		this.testDate = domFactory.domElement({
-			classes: ['tdwrap'],
-			children: [
-				domFactory.domElement({
-					classes: ['testdate'],
-					type: 'input',
-					attributes: { type: 'date' },
-				}),
-			],
-		});
-		this.parent.appendChild(this.testDate);
-		this.addOnChange();
-	}
-	static addOnChange() {
-		this.testDate.addEventListener('input', e => {
-			console.log(e.target.value);
-		});
-	}
-	static addListenerToModifyName() {
-		const myArr = Array.from(document.querySelectorAll('.modifyName'));
-		myArr.map(x => this.endEditOnEnter(x));
-	}
-	static endEditOnEnter(element) {
-		element.addEventListener('keydown', e => {
+	static modifyTaskNameListener(element) {
+		console.log(element.childNodes[0].childNodes[0]);
+		element.childNodes[0].childNodes[0].addEventListener('keydown', e => {
 			if (e.key === 'Enter') {
 				e.preventDefault();
-				element.blur();
+				element.childNodes[0].childNodes[0].blur();
 			}
 		});
 	}
+	static showDelete(element) {
+		console.log(element.childNodes[1]);
+		this.task.addEventListener('mouseover', e => {
+			element.childNodes[1].style.visibility = 'visible';
+		});
+		this.task.addEventListener('mouseout', e => {
+			element.childNodes[1].style.visibility = 'hidden';
+		});
+	}
+
+	// static checkDateThing() {
+	// 	this.testDate = domFactory.domElement({
+	// 		classes: ['tdwrap'],
+	// 		children: [
+	// 			domFactory.domElement({
+	// 				classes: ['testdate'],
+	// 				type: 'input',
+	// 				attributes: { type: 'date' },
+	// 			}),
+	// 		],
+	// 	});
+	// 	this.parent.appendChild(this.testDate);
+	// }
+	// static addOnChange() {
+	// 	this.testDate.addEventListener('input', e => {
+	// 		console.log(e.target.value);
+	// 	});
+	// }
+	// static addListenerToModifyName() {
+	// 	const myArr = Array.from(document.querySelectorAll('.modifyName'));
+	// 	myArr.map(x => this.endEditOnEnter(x));
+	// }
+	// static endEditOnEnter(element) {
+	// 	element.addEventListener('keydown', e => {
+	// 		if (e.key === 'Enter') {
+	// 			e.preventDefault();
+	// 			element.blur();
+	// 		}
+	// 	});
+	// }
+	// static clickToModifyName(element) {
+	// 	element.addEventListener('click', e => {
+	// 		if (e.target.classList.contains('modifyName')) {
+	// 			console.log(e);
+	// 			const newName = prompt(`pick a new name`);
+	// 			e.target.textContent = newName;
+	// 		}
+	// 	});
+	// }
 }
