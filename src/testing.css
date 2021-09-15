@@ -3,17 +3,51 @@
 	grid-template-columns: auto 1fr;
 	margin-top: 2px;
 	margin-bottom: 2px;
+	box-sizing: border-box;
+	border: 1px solid white;
 }
 .childwrap {
 	display: grid;
 	width: inherit;
 	grid-template-columns: 5em 5em 150px;
+	box-sizing: border-box;
+	border: 1px solid white;
 }
 
 .modifyName {
 	display: flex;
-	white-space: 100px;
 	max-width: 75px;
-	word-wrap: break-word;
-	overflow: hidden;
+	box-sizing: border-box;
+	border: 1px solid white;
+	overflow: clip;
+}
+
+.modifyName:hover {
+	overflow: visible;
+	word-wrap: normal;
+}
+
+.modifyName:focus {
+	border: none;
+}
+
+[contenteditable] {
+	outline: 0px solid transparent;
+}
+
+.modifyName:hover ~ .from {
+	display: none;
+}
+.modifyName:hover ~ .dateThing {
+	display: none;
+}
+
+.from {
+	box-sizing: border-box;
+	border: 1px solid white;
+}
+
+.dateThing {
+	box-sizing: border-box;
+	border: 1px solid white;
 }

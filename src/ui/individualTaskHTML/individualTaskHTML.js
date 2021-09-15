@@ -24,9 +24,10 @@ export default class IndividualTasksHTML {
 							classes: ['modifyName'],
 							attributes: { contenteditable: 'true' },
 							type: 'span',
-							text: 'name',
+							text: 'nameasdksadsajdjksadja',
 						}),
 						domFactory.domElement({
+							classes: ['from'],
 							type: 'span',
 							text: 'from',
 						}),
@@ -41,10 +42,10 @@ export default class IndividualTasksHTML {
 		});
 		this.parent.appendChild(this.task);
 		this.deleteButton();
-		// this.clickToModifyName(this.task);
 	}
 	static deleteButton() {
 		this.deleteBtn = domFactory.domElement({
+			classes: ['deleteTask'],
 			type: 'button',
 			text: 'X',
 		});
@@ -79,9 +80,7 @@ export default class IndividualTasksHTML {
 		});
 	}
 	static addListenerToModifyName() {
-		const myNodeList = document.querySelectorAll('.modifyName');
-		const myArr = Array.from(myNodeList);
-		console.log(myArr);
+		const myArr = Array.from(document.querySelectorAll('.modifyName'));
 		myArr.map(x => this.endEditOnEnter(x));
 	}
 	static endEditOnEnter(element) {
