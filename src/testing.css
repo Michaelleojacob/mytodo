@@ -25,6 +25,7 @@
 .modifyName:hover {
 	overflow: visible;
 	word-wrap: normal;
+	font-weight: 600;
 }
 
 .modifyName:focus {
@@ -36,15 +37,32 @@
 }
 
 .modifyName:hover ~ .from {
-	display: none;
+	visibility: hidden;
 }
 .modifyName:hover ~ .dateThing {
-	display: none;
+	visibility: hidden;
 }
 
 .from {
+	max-width: 60px;
+	white-space: nowrap;
 	box-sizing: border-box;
 	border: none;
+	overflow: clip;
+}
+
+.from:hover {
+	overflow: visible;
+	word-wrap: normal;
+	white-space: nowrap;
+	font-weight: 600;
+}
+
+.from:hover ~ .modifyName {
+	visibility: hidden;
+}
+.from:hover ~ .dateThing {
+	visibility: hidden;
 }
 
 .dateThing {

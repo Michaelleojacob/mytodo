@@ -1,14 +1,13 @@
 import domFactory from '../../domFactory/domFactory';
 import GenerateRandomID from '../../generateRandomID/generateRandomID';
+import Storage from '../../Storage/Storage';
 
 export default class IndividualTasksHTML {
 	static init(parent) {
 		this.parent = parent;
-		this.makeOneTask();
-		this.makeOneTask();
-		this.makeOneTask();
+		this.getAllTasks();
 	}
-	static makeOneTask() {
+	static makeOneTask(obj) {
 		this.task = domFactory.domElement({
 			classes: ['taskwrap'],
 			attributes: {
@@ -22,17 +21,21 @@ export default class IndividualTasksHTML {
 							classes: ['modifyName'],
 							attributes: { contenteditable: 'true' },
 							type: 'span',
-							text: 'nameasdksadsajdjksadja',
+							text: obj.name,
 						}),
 						domFactory.domElement({
 							classes: ['from'],
 							type: 'span',
-							text: 'from',
+							text: obj.from,
 						}),
 						domFactory.domElement({
 							type: 'input',
 							classes: ['dateThing'],
-							attributes: { type: 'date' },
+							attributes: {
+								type: 'date',
+								max: '9999-12-31',
+								maxlength: '4',
+							},
 						}),
 					],
 				}),
@@ -40,8 +43,10 @@ export default class IndividualTasksHTML {
 		});
 		this.parent.appendChild(this.task);
 		this.deleteButton();
-		this.modifyTaskNameListener(this.task);
-		this.showDelete(this.task);
+		this.modifyingNameEnterToBlur(this.task);
+		this.showDeleteOnHover(this.task);
+		this.getNewNameOnModify(this.task);
+		this.getDateInput(this.task);
 	}
 	static deleteButton() {
 		this.deleteBtn = domFactory.domElement({
@@ -51,62 +56,50 @@ export default class IndividualTasksHTML {
 		});
 		this.task.appendChild(this.deleteBtn);
 	}
-	static modifyTaskNameListener(element) {
-		console.log(element.childNodes[0].childNodes[0]);
-		element.childNodes[0].childNodes[0].addEventListener('keydown', e => {
+	static modifyingNameEnterToBlur(element) {
+		const disableEnterOn = element.childNodes[0].childNodes[0];
+		disableEnterOn.addEventListener('keydown', e => {
 			if (e.key === 'Enter') {
 				e.preventDefault();
-				element.childNodes[0].childNodes[0].blur();
+				disableEnterOn.blur();
 			}
 		});
 	}
-	static showDelete(element) {
-		console.log(element.childNodes[1]);
-		this.task.addEventListener('mouseover', e => {
+	static showDeleteOnHover(element) {
+		this.task.addEventListener('mouseover', () => {
 			element.childNodes[1].style.visibility = 'visible';
 		});
-		this.task.addEventListener('mouseout', e => {
+		this.task.addEventListener('mouseout', () => {
 			element.childNodes[1].style.visibility = 'hidden';
 		});
 	}
-
-	// static checkDateThing() {
-	// 	this.testDate = domFactory.domElement({
-	// 		classes: ['tdwrap'],
-	// 		children: [
-	// 			domFactory.domElement({
-	// 				classes: ['testdate'],
-	// 				type: 'input',
-	// 				attributes: { type: 'date' },
-	// 			}),
-	// 		],
-	// 	});
-	// 	this.parent.appendChild(this.testDate);
-	// }
-	// static addOnChange() {
-	// 	this.testDate.addEventListener('input', e => {
-	// 		console.log(e.target.value);
-	// 	});
-	// }
-	// static addListenerToModifyName() {
-	// 	const myArr = Array.from(document.querySelectorAll('.modifyName'));
-	// 	myArr.map(x => this.endEditOnEnter(x));
-	// }
-	// static endEditOnEnter(element) {
-	// 	element.addEventListener('keydown', e => {
-	// 		if (e.key === 'Enter') {
-	// 			e.preventDefault();
-	// 			element.blur();
-	// 		}
-	// 	});
-	// }
-	// static clickToModifyName(element) {
-	// 	element.addEventListener('click', e => {
-	// 		if (e.target.classList.contains('modifyName')) {
-	// 			console.log(e);
-	// 			const newName = prompt(`pick a new name`);
-	// 			e.target.textContent = newName;
-	// 		}
-	// 	});
-	// }
+	static getNewNameOnModify(element) {
+		let timeout = null;
+		const nameModified = element.childNodes[0].childNodes[0];
+		nameModified.addEventListener('input', () => {
+			if (nameModified.textContent.trim() === '') return;
+			clearTimeout(timeout);
+			timeout = setTimeout(() => {
+				if (nameModified.textContent.trim() === '') return;
+				console.log(nameModified.textContent);
+			}, 1000);
+		});
+	}
+	static getDateInput(element) {
+		let timeout = null;
+		const mything = element.childNodes[0].childNodes[2];
+		mything.addEventListener('input', () => {
+			clearTimeout(timeout);
+			timeout = setTimeout(() => {
+				console.log(mything.value);
+			}, 1000);
+		});
+	}
+	static getAllTasks() {
+		const tasks = Storage.getTodos();
+		console.log(tasks);
+		tasks.map(x => {
+			this.makeOneTask(x);
+		});
+	}
 }
