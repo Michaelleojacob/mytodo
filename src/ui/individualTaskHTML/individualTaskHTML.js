@@ -27,7 +27,7 @@ export default class IndividualTasksHTML {
 						domFactory.domElement({
 							classes: ['from'],
 							type: 'span',
-							text: obj.from,
+							text: this.testing(obj),
 						}),
 						domFactory.domElement({
 							type: 'input',
@@ -49,6 +49,11 @@ export default class IndividualTasksHTML {
 		this.showDeleteOnHover(this.task);
 		this.getNewNameOnModify(this.task);
 		this.getDateInput(this.task);
+	}
+	static testing(x) {
+		if (x.from === 'all') {
+			return;
+		} else return x.from;
 	}
 	static deleteButton() {
 		this.deleteBtn = domFactory.domElement({
