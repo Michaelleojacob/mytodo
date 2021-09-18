@@ -8,10 +8,4 @@ export default class Todo {
 		this.id = GenerateRandomID.giveUniqueId();
 		this.getAllTodos = 'all';
 	}
-	todoName(newName) {
-		this.name = newName;
-	}
-	todoFrom(from) {
-		this.from = from;
-	}
 }

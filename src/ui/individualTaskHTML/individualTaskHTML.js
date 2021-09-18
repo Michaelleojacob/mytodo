@@ -1,6 +1,7 @@
 import domFactory from '../../domFactory/domFactory';
 import GenerateRandomID from '../../generateRandomID/generateRandomID';
 import Storage from '../../Storage/Storage';
+import Todo from '../../Todos/Todo';
 
 export default class IndividualTasksHTML {
 	static init(parent) {
@@ -11,7 +12,7 @@ export default class IndividualTasksHTML {
 		this.task = domFactory.domElement({
 			classes: ['taskwrap'],
 			attributes: {
-				id: GenerateRandomID.giveUniqueId(),
+				id: obj.id,
 			},
 			children: [
 				domFactory.domElement({
@@ -35,6 +36,7 @@ export default class IndividualTasksHTML {
 								type: 'date',
 								max: '9999-12-31',
 								maxlength: '4',
+								value: obj.date,
 							},
 						}),
 					],
@@ -81,7 +83,8 @@ export default class IndividualTasksHTML {
 			clearTimeout(timeout);
 			timeout = setTimeout(() => {
 				if (nameModified.textContent.trim() === '') return;
-				console.log(nameModified.textContent);
+				const changedName = nameModified.textContent.trim();
+				Storage.newTaskName(element.id, changedName);
 			}, 1000);
 		});
 	}
@@ -92,12 +95,14 @@ export default class IndividualTasksHTML {
 			clearTimeout(timeout);
 			timeout = setTimeout(() => {
 				console.log(mything.value);
+				const changedDate = mything.value;
+				Storage.changeTaskDate(element.id, changedDate);
+				console.log(Storage.getTodos());
 			}, 1000);
 		});
 	}
 	static getAllTasks() {
 		const tasks = Storage.getTodos();
-		console.log(tasks);
 		tasks.map(x => {
 			this.makeOneTask(x);
 		});

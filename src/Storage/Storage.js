@@ -16,6 +16,24 @@ export default class Storage {
 		todos.push(todo);
 		localStorage.setItem('todos', JSON.stringify(todos));
 	}
+	static newTaskName(taskid, newName) {
+		const todos = Storage.getTodos();
+		todos.map(task => {
+			if (task.id === taskid) {
+				return (task.name = newName);
+			}
+		});
+		localStorage.setItem('todos', JSON.stringify(todos));
+	}
+	static changeTaskDate(taskid, newDate) {
+		const todos = Storage.getTodos();
+		todos.map(task => {
+			if (task.id === taskid) {
+				return (task.date = newDate);
+			}
+		});
+		localStorage.setItem('todos', JSON.stringify(todos));
+	}
 	static removeTodo(id) {
 		const todos = Storage.getTodos();
 		todos.forEach((todo, index) => {
