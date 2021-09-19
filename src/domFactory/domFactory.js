@@ -5,6 +5,7 @@ export default class domFactory {
 		attributes = null,
 		text = null,
 		children = null,
+		events = null,
 	}) {
 		const el = document.createElement(type);
 		if (classes !== null) {
@@ -18,6 +19,11 @@ export default class domFactory {
 		}
 		if (children !== null) {
 			children.map(x => el.appendChild(x));
+		}
+		if (events !== null) {
+			events.map(({ type, handler }) => {
+				el.addEventListener(type, handler);
+			});
 		}
 		return el;
 	}

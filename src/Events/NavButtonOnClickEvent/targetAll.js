@@ -2,6 +2,7 @@ import domFactory from '../../domFactory/domFactory';
 import removeAllChildNodes from '../../removeAllChildNodes/removeAllChildNodes';
 import Storage from '../../Storage/Storage';
 import NewItemEvent from '../newItemEvent/NewItemEvent';
+import IndividualTasksHTML from '../../ui/individualTaskHTML/individualTaskHTML';
 
 export default class TargetAll {
 	static init() {
@@ -24,11 +25,7 @@ export default class TargetAll {
 		removeAllChildNodes(this.renderTasks);
 		const arr = Storage.getTodos();
 		for (let x of arr) {
-			const element = domFactory.domElement({
-				type: 'button',
-				classes: [x.name, 'tasks'],
-				text: x.name,
-			});
+			const element = IndividualTasksHTML.makeOneTask(x);
 			this.renderTasks.appendChild(element);
 		}
 		this.makeNewItemButton();

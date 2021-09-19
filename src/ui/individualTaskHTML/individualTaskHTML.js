@@ -1,7 +1,5 @@
 import domFactory from '../../domFactory/domFactory';
-import GenerateRandomID from '../../generateRandomID/generateRandomID';
 import Storage from '../../Storage/Storage';
-import Todo from '../../Todos/Todo';
 
 export default class IndividualTasksHTML {
 	static init(parent) {
@@ -23,11 +21,15 @@ export default class IndividualTasksHTML {
 							attributes: { contenteditable: 'true' },
 							type: 'span',
 							text: obj.name,
+							events: [
+								{ type: 'keydown', handler: this.modifyingNameEnterToBlur },
+								{ type: 'input', handler: this.getNewNameOnModify },
+							],
 						}),
 						domFactory.domElement({
 							classes: ['from'],
 							type: 'span',
-							text: this.testing(obj),
+							text: this.onlyDisplayFromProjects(obj.from),
 						}),
 						domFactory.domElement({
 							type: 'input',
@@ -38,38 +40,65 @@ export default class IndividualTasksHTML {
 								maxlength: '4',
 								value: obj.date,
 							},
+							events: [{ type: 'input', handler: this.getDateInput }],
 						}),
 					],
 				}),
+				domFactory.domElement({
+					classes: ['deleteTask'],
+					type: 'button',
+					text: 'X',
+					attributes: { style: 'visibility:hidden' },
+					events: [{ type: 'click', handler: this.deleteTask }],
+				}),
 			],
 		});
-		this.parent.appendChild(this.task);
-		this.deleteButton();
-		this.modifyingNameEnterToBlur(this.task);
 		this.showDeleteOnHover(this.task);
-		this.getNewNameOnModify(this.task);
-		this.getDateInput(this.task);
+		return this.task;
 	}
-	static testing(x) {
-		if (x.from === 'all') {
+
+	static onlyDisplayFromProjects(x) {
+		if (x === 'all') {
 			return;
-		} else return x.from;
+		} else return x;
 	}
-	static deleteButton() {
-		this.deleteBtn = domFactory.domElement({
-			classes: ['deleteTask'],
-			type: 'button',
-			text: 'X',
-		});
-		this.task.appendChild(this.deleteBtn);
+
+	static deleteTask(e) {
+		const elID = e.target.parentNode.id;
+		Storage.removeTodo(elID);
+		e.target.parentNode.remove();
 	}
-	static modifyingNameEnterToBlur(element) {
-		const disableEnterOn = element.childNodes[0].childNodes[0];
-		disableEnterOn.addEventListener('keydown', e => {
-			if (e.key === 'Enter') {
-				e.preventDefault();
-				disableEnterOn.blur();
-			}
+
+	static modifyingNameEnterToBlur(e) {
+		if (e.key === 'Enter') {
+			e.preventDefault();
+			e.target.blur();
+		}
+	}
+	static getNewNameOnModify(e) {
+		let timeout = null;
+		const parentID = e.target.parentNode.parentNode.id;
+		const modifiedName = e.target.textContent.trim();
+		if (modifiedName === '') return;
+		clearTimeout(timeout);
+		timeout = setTimeout(() => {
+			const changeName = modifiedName;
+			Storage.newTaskName(parentID, changeName);
+		}, 1000);
+	}
+	static getDateInput(e) {
+		let timeout = null;
+		const parentID = e.target.parentNode.parentNode.id;
+		clearTimeout(timeout);
+		timeout = setTimeout(() => {
+			const changedDate = e.target.value;
+			Storage.changeTaskDate(parentID, changedDate);
+		}, 1000);
+	}
+	static getAllTasks() {
+		const tasks = Storage.getTodos();
+		tasks.map(x => {
+			this.makeOneTask(x);
 		});
 	}
 	static showDeleteOnHover(element) {
@@ -78,38 +107,6 @@ export default class IndividualTasksHTML {
 		});
 		this.task.addEventListener('mouseout', () => {
 			element.childNodes[1].style.visibility = 'hidden';
-		});
-	}
-	static getNewNameOnModify(element) {
-		let timeout = null;
-		const nameModified = element.childNodes[0].childNodes[0];
-		nameModified.addEventListener('input', () => {
-			if (nameModified.textContent.trim() === '') return;
-			clearTimeout(timeout);
-			timeout = setTimeout(() => {
-				if (nameModified.textContent.trim() === '') return;
-				const changedName = nameModified.textContent.trim();
-				Storage.newTaskName(element.id, changedName);
-			}, 1000);
-		});
-	}
-	static getDateInput(element) {
-		let timeout = null;
-		const mything = element.childNodes[0].childNodes[2];
-		mything.addEventListener('input', () => {
-			clearTimeout(timeout);
-			timeout = setTimeout(() => {
-				console.log(mything.value);
-				const changedDate = mything.value;
-				Storage.changeTaskDate(element.id, changedDate);
-				console.log(Storage.getTodos());
-			}, 1000);
-		});
-	}
-	static getAllTasks() {
-		const tasks = Storage.getTodos();
-		tasks.map(x => {
-			this.makeOneTask(x);
 		});
 	}
 }

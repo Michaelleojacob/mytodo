@@ -1,4 +1,4 @@
-.taskwrap {
+/* .taskwrap {
 	display: grid;
 	grid-template-columns: auto 1fr;
 	margin-top: 2px;
@@ -9,7 +9,7 @@
 .childwrap {
 	display: grid;
 	width: inherit;
-	grid-template-columns: 5em 5em 150px;
+	grid-template-columns: 4em 4em 150px;
 	box-sizing: border-box;
 	border: none;
 }
@@ -69,6 +69,7 @@
 .dateThing {
 	box-sizing: border-box;
 	border: none;
+	width: 130px;
 }
 
 .dateThing:hover {
@@ -77,4 +78,4 @@
 
 .deleteTask {
 	visibility: hidden;
-}
+} */
