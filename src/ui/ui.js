@@ -40,6 +40,6 @@ export default class UI {
 	}
 	//! for testing individual tasks !\\
 	static individualTasks() {
-		IndividualTasksHTML.init(this.parent);
+		IndividualTasksHTML.init();
 	}
 }

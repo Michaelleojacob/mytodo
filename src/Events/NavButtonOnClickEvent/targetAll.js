@@ -14,6 +14,7 @@ export default class TargetAll {
 		this.all = document.querySelector('.all');
 		this.title = document.querySelector('.tTitle');
 		this.renderTasks = document.querySelector('.renderTasks');
+		this.taskWrapper = document.querySelector('.taskWrapper');
 	}
 
 	static allClickedOn() {
@@ -25,8 +26,7 @@ export default class TargetAll {
 		removeAllChildNodes(this.renderTasks);
 		const arr = Storage.getTodos();
 		for (let x of arr) {
-			const element = IndividualTasksHTML.makeOneTask(x);
-			this.renderTasks.appendChild(element);
+			IndividualTasksHTML.makeOneTask(x);
 		}
 		this.makeNewItemButton();
 		this.addInputArea();
@@ -43,7 +43,7 @@ export default class TargetAll {
 				})),
 			],
 		});
-		this.renderTasks.appendChild(this.buttonWrapper);
+		this.taskWrapper.appendChild(this.buttonWrapper);
 		return this.buttonWrapper, this.newTaskButton;
 	}
 	static addInputArea() {

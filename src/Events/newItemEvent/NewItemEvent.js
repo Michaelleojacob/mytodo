@@ -3,6 +3,8 @@ import toggleDisplay from '../toggleDisplay/toggleDisplay';
 import Projects from '../../Projects/Projects';
 import Storage from '../../Storage/Storage';
 import AddProjectsToUI from '../../ui/navMenu/projects/projects';
+import Todo from '../../Todos/Todo';
+import IndividualTasksHTML from '../../ui/individualTaskHTML/individualTaskHTML';
 
 export default class NewItemEvent {
 	static formDOMTree(parent, myid) {
@@ -58,7 +60,7 @@ export default class NewItemEvent {
 				this.newProject(formInput);
 				break;
 			case 'newAllTask':
-				console.log('new all task');
+				this.newAllTask(formInput);
 				break;
 			case 'newProjTask':
 				console.log('new project task');
@@ -69,5 +71,13 @@ export default class NewItemEvent {
 		const newProject = new Projects(input);
 		AddProjectsToUI.renderSingleProject(newProject);
 		Storage.addProject(newProject);
+	}
+	static newAllTask(input) {
+		const newAllTask = new Todo(input, 'all');
+		IndividualTasksHTML.makeOneTask(newAllTask);
+		Storage.addTodo(newAllTask);
+	}
+	static newProjectTask(input) {
+		const newProjectTask = new Todo(input, 'all');
 	}
 }

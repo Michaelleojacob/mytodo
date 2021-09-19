@@ -17,14 +17,12 @@ export default class TaskArea {
 	static taskTitle() {
 		return (this.tTitle = domFactory.createDiv({
 			elementName: 'tTitle',
-			// text: 'title',
 			parent: this.taskWrapper,
 		}));
 	}
 	static renderTasksHere() {
 		return (this.renderTasks = domFactory.createDiv({
 			elementName: 'renderTasks',
-			// text: 'tasks',
 			parent: this.taskWrapper,
 		}));
 	}

@@ -2,8 +2,8 @@ import domFactory from '../../domFactory/domFactory';
 import Storage from '../../Storage/Storage';
 
 export default class IndividualTasksHTML {
-	static init(parent) {
-		this.parent = parent;
+	static init() {
+		this.parent = document.querySelector('.renderTasks');
 		this.getAllTasks();
 	}
 	static makeOneTask(obj) {
@@ -54,6 +54,7 @@ export default class IndividualTasksHTML {
 			],
 		});
 		this.showDeleteOnHover(this.task);
+		this.parent.appendChild(this.task);
 		return this.task;
 	}
 
@@ -91,7 +92,7 @@ export default class IndividualTasksHTML {
 		const parentID = e.target.parentNode.parentNode.id;
 		clearTimeout(timeout);
 		timeout = setTimeout(() => {
-			const changedDate = e.target.value;
+			const changedDate = e.target.value.trim();
 			Storage.changeTaskDate(parentID, changedDate);
 		}, 1000);
 	}

@@ -1,7 +1,7 @@
 import GenerateRandomID from '../generateRandomID/generateRandomID';
 
 export default class Todo {
-	constructor(name, date, from) {
+	constructor(name, from, date) {
 		this.name = name;
 		this.date = date;
 		this.from = from;
