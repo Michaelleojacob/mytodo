@@ -7,6 +7,7 @@ export default class TaskArea {
 		this.taskAreaWrapper();
 		this.taskTitle();
 		this.renderTasksHere();
+		this.newItemButtonArea();
 	}
 	static taskAreaWrapper() {
 		return (this.taskWrapper = domFactory.createDiv({
@@ -25,5 +26,12 @@ export default class TaskArea {
 			elementName: 'renderTasks',
 			parent: this.taskWrapper,
 		}));
+	}
+	static newItemButtonArea() {
+		this.newItemButtonWrapper = domFactory.domElement({
+			classes: ['newItemButtonWrapper'],
+		});
+		console.log(this.parent);
+		this.taskWrapper.appendChild(this.newItemButtonWrapper);
 	}
 }
