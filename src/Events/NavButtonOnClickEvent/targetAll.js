@@ -26,7 +26,7 @@ export default class TargetAll {
 		});
 	}
 	static renderNewItemButton() {
-		this.formTree = NewItemEvent.formDOMTree('newAllTask');
+		this.formTree = NewItemEvent.formDOMTree('newAllTask', 'task');
 		this.newbtn.appendChild(this.formTree);
 	}
 }

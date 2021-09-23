@@ -7,24 +7,25 @@ import Todo from '../../Todos/Todo';
 import IndividualTasksHTML from '../../ui/individualTaskHTML/individualTaskHTML';
 
 export default class NewItemEvent {
-	static formDOMTree(myid) {
+	static formDOMTree(formID, formText) {
 		this.parent = parent;
 		this.formTree = domFactory.domElement({
 			children: [
 				domFactory.domElement({
 					type: 'button',
-					text: '+ new item',
-					events: [{ type: 'click', handler: this.renameLater }],
+					text: `+ ${formText}`,
+					events: [{ type: 'click', handler: this.toggleInputArea }],
 				}),
 				domFactory.domElement({
 					type: 'form',
-					attributes: { id: myid },
+					attributes: { id: formID },
 					// attributes: { id: myid, style: 'display:none' },
 					// attributes: { style: 'display:none' },
 					events: [{ type: 'submit', handler: this.getFormInput }],
 					children: [
 						domFactory.domElement({
 							type: 'input',
+							attributes: { placeholder: `new ${formText}` },
 						}),
 						domFactory.domElement({
 							children: [
@@ -49,8 +50,8 @@ export default class NewItemEvent {
 			toggleDisplay(toggler);
 		});
 	}
-	static renameLater() {
-		console.log('hi');
+	static toggleInputArea(e) {
+		toggleDisplay(e.target.parentNode.childNodes[1]);
 	}
 	static getFormInput(e) {
 		e.preventDefault();
@@ -66,15 +67,15 @@ export default class NewItemEvent {
 	static delegateInput(elID, formInput) {
 		switch (elID) {
 			case 'newproject':
-				console.log(`new project`);
+				// console.log(`new project`);
 				this.newProject(formInput);
 				break;
 			case 'newAllTask':
-				console.log(`new all task`);
+				// console.log(`new all task`);
 				this.newAllTask(formInput);
 				break;
 			case 'newProjTask':
-				console.log(`new project task`);
+				// console.log(`new project task`);
 				this.newProjectTask(formInput);
 				break;
 		}

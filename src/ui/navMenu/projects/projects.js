@@ -9,7 +9,7 @@ export default class AddProjectsToUI {
 		this.renderStaticProjectText();
 		this.makeProjectsWrapper();
 		this.renderAllProjects();
-		this.addInputArea();
+		this.renderNewProjectButton();
 	}
 
 	static renderStaticProjectText() {
@@ -30,13 +30,6 @@ export default class AddProjectsToUI {
 		myArr.forEach(x => {
 			this.renderSingleProject(x);
 		});
-	}
-
-	static addInputArea() {
-		this.newItemForm = NewItemEvent.formDOMTree(
-			this.newProjectButtonWrapper,
-			'newproject'
-		);
 	}
 
 	static renderSingleProject(item) {
@@ -60,5 +53,8 @@ export default class AddProjectsToUI {
 		});
 		this.projectsWrapper.appendChild(elementToRender);
 	}
-	//! find good spot for rendering the button !\\
+	static renderNewProjectButton() {
+		this.newprojbtn = NewItemEvent.formDOMTree('newproject', 'project');
+		this.parent.appendChild(this.newprojbtn);
+	}
 }
