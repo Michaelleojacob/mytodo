@@ -55,8 +55,8 @@ export default class NewItemEvent {
 	}
 	static getFormInput(e) {
 		e.preventDefault();
-		console.log(this);
-		console.log(e.submitter);
+		// console.log(this);
+		// console.log(e.submitter);
 		if (e.submitter.textContent === 'cancel') return;
 		if (e.target[0].value.trim() === '') return;
 		const userInput = e.target[0].value.trim();

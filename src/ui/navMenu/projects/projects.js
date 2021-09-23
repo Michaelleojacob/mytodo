@@ -48,6 +48,7 @@ export default class AddProjectsToUI {
 					classes: ['deleteProj'],
 					type: 'button',
 					text: 'X',
+					events: [{ type: 'click', handler: this.renamelater }],
 				}),
 			],
 		});
@@ -56,5 +57,9 @@ export default class AddProjectsToUI {
 	static renderNewProjectButton() {
 		this.newprojbtn = NewItemEvent.formDOMTree('newproject', 'project');
 		this.parent.appendChild(this.newprojbtn);
+	}
+	static renamelater(e) {
+		Storage.removeProj(e.target.parentNode.id);
+		e.target.parentNode.remove();
 	}
 }
