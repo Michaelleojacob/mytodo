@@ -16,10 +16,10 @@ export default class TaskArea {
 		}));
 	}
 	static taskTitle() {
-		return (this.tTitle = domFactory.createDiv({
-			elementName: 'tTitle',
-			parent: this.taskWrapper,
-		}));
+		this.taskTitleWrapper = domFactory.domElement({
+			attributes: { class: 'taskTitleWrapper' },
+		});
+		this.taskWrapper.appendChild(this.taskTitleWrapper);
 	}
 	static renderTasksHere() {
 		return (this.renderTasks = domFactory.createDiv({
@@ -31,7 +31,6 @@ export default class TaskArea {
 		this.newItemButtonWrapper = domFactory.domElement({
 			classes: ['newItemButtonWrapper'],
 		});
-		console.log(this.parent);
 		this.taskWrapper.appendChild(this.newItemButtonWrapper);
 	}
 }

@@ -12,7 +12,6 @@ export default class UI {
 		this.header();
 		this.navMenu();
 		this.tasks();
-		this.individualTasks();
 	}
 	static header() {
 		Header.init(this.parent);
@@ -37,9 +36,5 @@ export default class UI {
 	}
 	static tasks() {
 		TaskArea.init(this.parent);
-	}
-	//! for testing individual tasks !\\
-	static individualTasks() {
-		IndividualTasksHTML.init();
 	}
 }

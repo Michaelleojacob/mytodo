@@ -9,9 +9,7 @@ export default class AddProjectsToUI {
 		this.renderStaticProjectText();
 		this.makeProjectsWrapper();
 		this.renderAllProjects();
-		this.renderNewProjectButton();
 		this.addInputArea();
-		this.listenNewItemButtonToOpenForm();
 	}
 
 	static renderStaticProjectText() {
@@ -33,37 +31,19 @@ export default class AddProjectsToUI {
 			this.renderSingleProject(x);
 		});
 	}
-	static renderNewProjectButton() {
-		this.newProjectButtonWrapper = domFactory.domElement({
-			classes: ['newButtonWrapper', 'projectButtonWrapper'],
-			children: [
-				(this.newProjButton = domFactory.domElement({
-					type: 'button',
-					text: '+ new project',
-					classes: ['newItem', 'newProj', 'closeOnClick'],
-				})),
-			],
-		});
-		this.parent.appendChild(this.newProjectButtonWrapper);
-	}
+
 	static addInputArea() {
 		this.newItemForm = NewItemEvent.formDOMTree(
 			this.newProjectButtonWrapper,
 			'newproject'
 		);
-		NewItemEvent.getFormInput(this.newItemForm);
 	}
-	static listenNewItemButtonToOpenForm() {
-		NewItemEvent.listenNewItemButtonToOpenForm({
-			elementListening: this.newProjButton,
-			toggler: this.newItemForm,
-		});
-	}
+
 	static renderSingleProject(item) {
 		this.project = item;
 		const trimmedName = this.project.name.trim().split(' ').join('');
 		const elementToRender = domFactory.domElement({
-			classes: ['projectItemWrapper'],
+			classes: ['navbutton', 'projectItemWrapper'],
 			attributes: { id: this.project.id },
 			children: [
 				domFactory.domElement({
@@ -80,4 +60,5 @@ export default class AddProjectsToUI {
 		});
 		this.projectsWrapper.appendChild(elementToRender);
 	}
+	//! find good spot for rendering the button !\\
 }

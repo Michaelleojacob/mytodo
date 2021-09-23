@@ -4,7 +4,6 @@ import Storage from '../../Storage/Storage';
 export default class IndividualTasksHTML {
 	static init() {
 		this.parent = document.querySelector('.renderTasks');
-		this.getAllTasks();
 	}
 	static makeOneTask(obj) {
 		this.task = domFactory.domElement({
@@ -54,7 +53,7 @@ export default class IndividualTasksHTML {
 			],
 		});
 		this.showDeleteOnHover(this.task);
-		this.parent.appendChild(this.task);
+		// this.parent.appendChild(this.task);
 		return this.task;
 	}
 
@@ -96,12 +95,7 @@ export default class IndividualTasksHTML {
 			Storage.changeTaskDate(parentID, changedDate);
 		}, 1000);
 	}
-	static getAllTasks() {
-		const tasks = Storage.getTodos();
-		tasks.map(x => {
-			this.makeOneTask(x);
-		});
-	}
+
 	static showDeleteOnHover(element) {
 		this.task.addEventListener('mouseover', () => {
 			element.childNodes[1].style.visibility = 'visible';

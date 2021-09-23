@@ -8,12 +8,16 @@ import testing from './testing';
 			this.renderUI();
 			// this.mytesting();
 			this.addEvents();
+			this.triggerClickAll();
 		},
 		renderUI() {
 			UI.init();
 		},
 		addEvents() {
 			Events.init();
+		},
+		triggerClickAll() {
+			document.querySelector('.all').click();
 		},
 		mytesting() {
 			testing();

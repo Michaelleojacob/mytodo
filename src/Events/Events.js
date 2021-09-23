@@ -6,15 +6,11 @@ export default class Events {
 	static init() {
 		this.handlecCloseNavMenu();
 		this.handleNavButtonEvent();
-		this.handleProjectDelete();
 	}
 	static handlecCloseNavMenu() {
 		closeNavMenu.closeNavMenu();
 	}
 	static handleNavButtonEvent() {
 		NavButtonEvent.handleNavDelegation();
-	}
-	static handleProjectDelete() {
-		DeleteProject.cacheDom();
 	}
 }

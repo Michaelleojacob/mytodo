@@ -56,7 +56,7 @@ export default class TargetProjects {
 			this.buttonWrapper,
 			'newProjTask'
 		);
-		NewItemEvent.getFormInput(this.newItemForm);
+		// NewItemEvent.getFormInput(this.newItemForm);
 	}
 	static listenForNewItemButtonClick() {
 		NewItemEvent.listenNewItemButtonToOpenForm({

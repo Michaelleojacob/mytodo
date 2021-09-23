@@ -1,67 +1,32 @@
 import domFactory from '../../domFactory/domFactory';
-import removeAllChildNodes from '../../removeAllChildNodes/removeAllChildNodes';
 import Storage from '../../Storage/Storage';
-import NewItemEvent from '../newItemEvent/NewItemEvent';
 import IndividualTasksHTML from '../../ui/individualTaskHTML/individualTaskHTML';
+import NewItemEvent from '../newItemEvent/NewItemEvent';
 
 export default class TargetAll {
-	static init() {
-		this.cacheDom();
-		this.allClickedOn();
-		this.simulateAllWasClicked();
+	static init({ title, tasks, newbtn }) {
+		this.title = title;
+		this.tasks = tasks;
+		this.newbtn = newbtn;
+		this.renderTitle();
+		this.renderTasks();
+		this.renderNewItemButton();
 	}
-	static cacheDom() {
-		this.all = document.querySelector('.all');
-		this.title = document.querySelector('.tTitle');
-		this.renderTasks = document.querySelector('.renderTasks');
-		this.taskWrapper = document.querySelector('.taskWrapper');
-	}
-
-	static allClickedOn() {
-		this.all.addEventListener('click', this.handleAllClick);
-	}
-
-	static handleAllClick = e => {
-		this.title.textContent = 'all';
-		removeAllChildNodes(this.renderTasks);
-		const arr = Storage.getTodos();
-		for (let x of arr) {
-			IndividualTasksHTML.makeOneTask(x);
-		}
-		this.makeNewItemButton();
-		this.addInputArea();
-		this.listenForNewItemButtonClick();
-	};
-	static makeNewItemButton() {
-		this.buttonWrapper = domFactory.domElement({
-			attributes: { id: 'newItemAllTasksWrapper' },
-			children: [
-				(this.newTaskButton = domFactory.domElement({
-					type: 'button',
-					classes: ['closeOnClick', 'newTask', 'newItem'],
-					text: `+ new task`,
-				})),
-			],
-		});
-		this.taskWrapper.appendChild(this.buttonWrapper);
-		return this.buttonWrapper, this.newTaskButton;
-	}
-	static addInputArea() {
-		this.newItemForm = NewItemEvent.formDOMTree(
-			this.buttonWrapper,
-			'newAllTask'
+	static renderTitle() {
+		this.title.appendChild(
+			domFactory.domElement({
+				text: 'All',
+			})
 		);
-		NewItemEvent.getFormInput(this.newItemForm);
 	}
-	static listenForNewItemButtonClick() {
-		NewItemEvent.listenNewItemButtonToOpenForm({
-			elementListening: this.newTaskButton,
-			toggler: this.newItemForm,
+	static renderTasks() {
+		this.allTasks = Storage.getTodos();
+		this.allTasks.map(task => {
+			this.tasks.appendChild(IndividualTasksHTML.makeOneTask(task));
 		});
 	}
-	static simulateAllWasClicked() {
-		document.addEventListener('DOMContentLoaded', () => {
-			this.all.click();
-		});
+	static renderNewItemButton() {
+		this.formTree = NewItemEvent.formDOMTree('newAllTask');
+		this.newbtn.appendChild(this.formTree);
 	}
 }
