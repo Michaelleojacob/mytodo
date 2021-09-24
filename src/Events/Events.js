@@ -1,6 +1,7 @@
 import closeNavMenu from './closeNavMenu/closeNavMenu';
 import NavButtonEvent from './NavButtonOnClickEvent/NavButtonOnClickEvent';
 import NewItemEvent from './newItemEvent/NewItemEvent';
+import TodayWeekMonth from './NavButtonOnClickEvent/TodayWeekMonth';
 
 export default class Events {
 	static init() {
@@ -8,6 +9,7 @@ export default class Events {
 		this.handlecCloseNavMenu();
 		this.handleNavButtonEvent();
 		this.handleNewItemEvent();
+		this.cacheForTodayWeekMonth();
 	}
 	static handlecCloseNavMenu() {
 		closeNavMenu.closeNavMenu();
@@ -17,5 +19,8 @@ export default class Events {
 	}
 	static handleNewItemEvent() {
 		NewItemEvent.init(this.taskAreaDomObj);
+	}
+	static cacheForTodayWeekMonth() {
+		TodayWeekMonth.init(this.taskAreaDomObj);
 	}
 }
