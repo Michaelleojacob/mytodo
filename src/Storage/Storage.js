@@ -66,6 +66,14 @@ export default class Storage {
 		});
 		localStorage.setItem('projects', JSON.stringify(projects));
 	}
+	static removeTodosOnProjectDelete(project) {
+		console.log(project);
+		let todos = Storage.getTodos();
+		todos = todos.filter((task, index) => {
+			task.from !== project;
+		});
+		localStorage.setItem('todos', JSON.stringify(todos));
+	}
 	static getAndFilterTodos(filterFrom, filterBy) {
 		const filtered = Storage.getTodos().filter(
 			todo => todo[filterFrom] === filterBy
@@ -74,32 +82,32 @@ export default class Storage {
 	}
 }
 
-function dummytodos() {
-	const todo1 = new Todo('todo1', '1/1/2021', 'all');
-	const todo2 = new Todo('todo2', '2/2/2021', 'all');
-	const todo3 = new Todo('todo3', '3/3/2021', 'project1');
-	const todo4 = new Todo('todo4', '4/4/2021', 'project2');
-	const todo5 = new Todo('todo5', '5/5/2021', 'all');
-	const todo6 = new Todo('todo6', '5/5/2021', 'all');
-	const todo7 = new Todo('todo7', '5/5/2021', 'all');
-	const todo8 = new Todo('todo8', '5/5/2021', 'project three');
-	const todo9 = new Todo(
-		'mytodo9withprojectname',
-		'1/1/2021',
-		'escape from tarkov'
-	);
+// function dummytodos() {
+// 	const todo1 = new Todo('todo1', '1/1/2021', 'all');
+// 	const todo2 = new Todo('todo2', '2/2/2021', 'all');
+// 	const todo3 = new Todo('todo3', '3/3/2021', 'project1');
+// 	const todo4 = new Todo('todo4', '4/4/2021', 'project2');
+// 	const todo5 = new Todo('todo5', '5/5/2021', 'all');
+// 	const todo6 = new Todo('todo6', '5/5/2021', 'all');
+// 	const todo7 = new Todo('todo7', '5/5/2021', 'all');
+// 	const todo8 = new Todo('todo8', '5/5/2021', 'project three');
+// 	const todo9 = new Todo(
+// 		'mytodo9withprojectname',
+// 		'1/1/2021',
+// 		'escape from tarkov'
+// 	);
 
-	Storage.addTodo(todo1);
-	Storage.addTodo(todo2);
-	Storage.addTodo(todo3);
-	Storage.addTodo(todo4);
-	Storage.addTodo(todo5);
-	Storage.addTodo(todo6);
-	Storage.addTodo(todo7);
-	Storage.addTodo(todo8);
-	Storage.addTodo(todo9);
-}
+// 	Storage.addTodo(todo1);
+// 	Storage.addTodo(todo2);
+// 	Storage.addTodo(todo3);
+// 	Storage.addTodo(todo4);
+// 	Storage.addTodo(todo5);
+// 	Storage.addTodo(todo6);
+// 	Storage.addTodo(todo7);
+// 	Storage.addTodo(todo8);
+// 	Storage.addTodo(todo9);
+// }
 
-if (localStorage.getItem('todos') === null) {
-	dummytodos();
-}
+// if (localStorage.getItem('todos') === null) {
+// 	dummytodos();
+// }

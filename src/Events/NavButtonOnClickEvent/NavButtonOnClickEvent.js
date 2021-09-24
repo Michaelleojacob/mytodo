@@ -39,7 +39,7 @@ export default class NavButtonEvent {
 		return this.targetStatus;
 	}
 	static setTargetStatus(newTarget) {
-		this.targetStatus = newTarget;
+		return (this.targetStatus = newTarget);
 	}
 	static clearTaskArea() {
 		this.taskParent.childNodes.forEach(child => {

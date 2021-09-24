@@ -2,6 +2,7 @@ import './projects.css';
 import domFactory from '../../../domFactory/domFactory';
 import Storage from '../../../Storage/Storage';
 import NewItemEvent from '../../../Events/newItemEvent/NewItemEvent';
+import NavButtonEvent from '../../../Events/NavButtonOnClickEvent/NavButtonOnClickEvent';
 
 export default class AddProjectsToUI {
 	static init(parent) {
@@ -48,7 +49,7 @@ export default class AddProjectsToUI {
 					classes: ['deleteProj'],
 					type: 'button',
 					text: 'X',
-					events: [{ type: 'click', handler: this.renamelater }],
+					events: [{ type: 'click', handler: this.deleteProject }],
 				}),
 			],
 		});
@@ -58,8 +59,13 @@ export default class AddProjectsToUI {
 		this.newprojbtn = NewItemEvent.formDOMTree('newproject', 'project');
 		this.parent.appendChild(this.newprojbtn);
 	}
-	static renamelater(e) {
-		Storage.removeProj(e.target.parentNode.id);
+	static deleteProject(e) {
+		const project = e.target.parentNode;
+		Storage.removeProj(project.id);
+		Storage.removeTodosOnProjectDelete(
+			project.childNodes[0].textContent.trim()
+		);
 		e.target.parentNode.remove();
+		NavButtonEvent.clearTaskArea();
 	}
 }

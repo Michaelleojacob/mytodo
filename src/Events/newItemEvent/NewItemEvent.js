@@ -60,8 +60,6 @@ export default class NewItemEvent {
 	}
 	static getFormInput(e) {
 		e.preventDefault();
-		// console.log(this);
-		// console.log(e.submitter);
 		if (e.submitter.textContent === 'cancel') return;
 		if (e.target[0].value.trim() === '') return;
 		const userInput = e.target[0].value.trim();
@@ -72,15 +70,12 @@ export default class NewItemEvent {
 	static delegateInput(elID, formInput) {
 		switch (elID) {
 			case 'newproject':
-				// console.log(`new project`);
 				this.newProject(formInput);
 				break;
 			case 'newAllTask':
-				// console.log(`new all task`);
 				this.newAllTask(formInput);
 				break;
 			case 'newProjTask':
-				console.log(`new project task`);
 				this.newProjectTask(formInput);
 				break;
 		}
