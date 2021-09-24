@@ -4,16 +4,17 @@ import IndividualTasksHTML from '../../ui/individualTaskHTML/individualTaskHTML'
 import NewItemEvent from '../newItemEvent/NewItemEvent';
 
 export default class TargetAll {
-	static init({ title, tasks, newbtn }) {
-		this.title = title;
-		this.tasks = tasks;
-		this.newbtn = newbtn;
+	static init({ titleParent, tasksParent, newbtnParent }) {
+		// console.log(obj);
+		this.titleParent = titleParent;
+		this.tasksParent = tasksParent;
+		this.newbtnParent = newbtnParent;
 		this.renderTitle();
 		this.renderTasks();
 		this.renderNewItemButton();
 	}
 	static renderTitle() {
-		this.title.appendChild(
+		this.titleParent.appendChild(
 			domFactory.domElement({
 				text: 'All',
 			})
@@ -22,11 +23,11 @@ export default class TargetAll {
 	static renderTasks() {
 		this.allTasks = Storage.getTodos();
 		this.allTasks.map(task => {
-			this.tasks.appendChild(IndividualTasksHTML.makeOneTask(task));
+			this.tasksParent.appendChild(IndividualTasksHTML.makeOneTask(task));
 		});
 	}
 	static renderNewItemButton() {
 		this.formTree = NewItemEvent.formDOMTree('newAllTask', 'task');
-		this.newbtn.appendChild(this.formTree);
+		this.newbtnParent.appendChild(this.formTree);
 	}
 }

@@ -2,11 +2,14 @@ import TargetAll from './targetAll';
 import TargetProjects from './TargetProjects';
 import TodayWeekMonth from './TodayWeekMonth';
 import removeAllChildNodes from '../../removeAllChildNodes/removeAllChildNodes';
+import TaskArea from '../../ui/taskArea/taskArea';
 
 export default class NavButtonEvent {
-	static handleNavDelegation() {
+	static handleNavDelegation(obj) {
+		this.obj = obj;
+		this.taskParent = obj.taskParent;
+		this.targetStatus = '';
 		this.cacheNavMenuUI();
-		this.cacheRenderAreaUI();
 		this.handleClick();
 		this.clearTaskArea();
 	}
@@ -15,39 +18,31 @@ export default class NavButtonEvent {
 		this.tTitle = document.querySelector('.tTitle');
 		this.renderTasks = document.querySelector('.renderTasks');
 	}
-	static cacheRenderAreaUI() {
-		this.taskWrapper = document.querySelector('.taskWrapper');
-		this.taskTitleWrapper = document.querySelector('.taskTitleWrapper');
-		this.renderTasks = document.querySelector('.renderTasks');
-		this.newItemButtonWrapper = document.querySelector('.newItemButtonWrapper');
-	}
-	static testing() {
-		const myobject = {
-			title: this.taskTitleWrapper,
-			tasks: this.renderTasks,
-			newbtn: this.newItemButtonWrapper,
-		};
-		return myobject;
-	}
 
 	static handleClick() {
 		this.navWrap.addEventListener('click', e => {
 			if (!e.target.classList.contains('navButton')) return;
 			const target = e.target;
 			const cList = target.classList;
+			this.setTargetStatus(e.target.textContent.trim());
 			this.clearTaskArea();
 
-			const lol = this.testing();
-
-			if (cList.contains('all')) TargetAll.init(lol);
-			else if (cList.contains('projTask')) console.log('project');
+			if (cList.contains('all')) {
+				TargetAll.init(this.obj);
+			} else if (cList.contains('projTask')) TargetProjects.init(e, this.obj);
 			else if (cList.contains('today')) console.log('today');
 			else if (cList.contains('week')) console.log('week');
 			else if (cList.contains('month')) console.log('month');
 		});
 	}
+	static getTargetStatus() {
+		return this.targetStatus;
+	}
+	static setTargetStatus(newTarget) {
+		this.targetStatus = newTarget;
+	}
 	static clearTaskArea() {
-		this.taskWrapper.childNodes.forEach(child => {
+		this.taskParent.childNodes.forEach(child => {
 			removeAllChildNodes(child);
 		});
 	}

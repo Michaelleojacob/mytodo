@@ -5,8 +5,13 @@ import Storage from '../../Storage/Storage';
 import AddProjectsToUI from '../../ui/navMenu/projects/projects';
 import Todo from '../../Todos/Todo';
 import IndividualTasksHTML from '../../ui/individualTaskHTML/individualTaskHTML';
+import NavButtonEvent from '../NavButtonOnClickEvent/NavButtonOnClickEvent';
 
 export default class NewItemEvent {
+	static init() {
+		this.container = document.querySelector('#container');
+		this.renderTasks = document.querySelector('.renderTasks');
+	}
 	static formDOMTree(formID, formText) {
 		this.parent = parent;
 		this.formTree = domFactory.domElement({
@@ -75,7 +80,7 @@ export default class NewItemEvent {
 				this.newAllTask(formInput);
 				break;
 			case 'newProjTask':
-				// console.log(`new project task`);
+				console.log(`new project task`);
 				this.newProjectTask(formInput);
 				break;
 		}
@@ -87,12 +92,15 @@ export default class NewItemEvent {
 	}
 	static newAllTask(input) {
 		const newAllTask = new Todo(input, 'all');
-		document
-			.querySelector('.renderTasks')
-			.appendChild(IndividualTasksHTML.makeOneTask(newAllTask));
+		this.renderTasks.appendChild(IndividualTasksHTML.makeOneTask(newAllTask));
 		Storage.addTodo(newAllTask);
 	}
-	static newProjectTask(input, objFrom) {
+	static newProjectTask(input) {
+		const objFrom = NavButtonEvent.getTargetStatus();
 		const newProjectTask = new Todo(input, objFrom);
+		Storage.addTodo(newProjectTask);
+		this.renderTasks.appendChild(
+			IndividualTasksHTML.makeOneTask(newProjectTask)
+		);
 	}
 }

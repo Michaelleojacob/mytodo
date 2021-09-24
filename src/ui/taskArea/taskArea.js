@@ -1,5 +1,6 @@
 import './taskArea.css';
 import domFactory from '../../domFactory/domFactory';
+import Events from '../../Events/Events';
 
 export default class TaskArea {
 	static init(parent) {
@@ -8,6 +9,7 @@ export default class TaskArea {
 		this.taskTitle();
 		this.renderTasksHere();
 		this.newItemButtonArea();
+		this.getTaskAreaElements();
 	}
 	static taskAreaWrapper() {
 		return (this.taskWrapper = domFactory.createDiv({
@@ -32,5 +34,13 @@ export default class TaskArea {
 			classes: ['newItemButtonWrapper'],
 		});
 		this.taskWrapper.appendChild(this.newItemButtonWrapper);
+	}
+	static getTaskAreaElements() {
+		Events.taskAreaDomObj = {
+			taskParent: this.taskWrapper,
+			titleParent: this.taskTitleWrapper,
+			tasksParent: this.renderTasks,
+			newbtnParent: this.newItemButtonWrapper,
+		};
 	}
 }

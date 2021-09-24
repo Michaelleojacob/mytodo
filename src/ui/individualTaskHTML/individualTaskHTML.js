@@ -2,9 +2,6 @@ import domFactory from '../../domFactory/domFactory';
 import Storage from '../../Storage/Storage';
 
 export default class IndividualTasksHTML {
-	static init() {
-		this.parent = document.querySelector('.renderTasks');
-	}
 	static makeOneTask(obj) {
 		this.task = domFactory.domElement({
 			classes: ['taskwrap'],
@@ -53,7 +50,6 @@ export default class IndividualTasksHTML {
 			],
 		});
 		this.showDeleteOnHover(this.task);
-		// this.parent.appendChild(this.task);
 		return this.task;
 	}
 
