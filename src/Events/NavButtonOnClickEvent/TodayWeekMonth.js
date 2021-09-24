@@ -1,12 +1,38 @@
 import Storage from '../../Storage/Storage';
 import domFactory from '../../domFactory/domFactory';
 import IndividualTasksHTML from '../../ui/individualTaskHTML/individualTaskHTML';
+import NavButtonEvent from './NavButtonOnClickEvent';
 
 export default class TodayWeekMonth {
 	static init({ titleParent, tasksParent }) {
 		this.titleParent = titleParent;
 		this.tasksParent = tasksParent;
+		this.dates = [];
+		this.status = null;
+		this.tasksParent.addEventListener('change', this.myfunc);
 	}
+
+	static setDatesArr(newDatesArr) {
+		this.dates = [];
+		this.dates = newDatesArr;
+	}
+
+	static myfunc = e => {
+		this.status = NavButtonEvent.getTargetStatus();
+		if (
+			this.status === 'today' ||
+			this.status === 'week' ||
+			this.status === 'month'
+		) {
+			if (this.dates.includes(e.target.value)) return;
+			else {
+				e.target.parentNode.parentNode.remove();
+			}
+		} else {
+			return;
+		}
+		return;
+	};
 
 	static renderTitleAndTasks(sortBy) {
 		this.renderTitle(sortBy);
@@ -36,7 +62,7 @@ export default class TodayWeekMonth {
 		const dateArr = [];
 		for (let i = 0; i <= num; i++) {
 			var d = new Date();
-			d.setDate(d.getDate() - i);
+			d.setDate(d.getDate() + i);
 			let month = '' + (d.getMonth() + 1);
 			let day = '' + d.getDate();
 			let year = d.getFullYear();
@@ -45,6 +71,7 @@ export default class TodayWeekMonth {
 			const formatedDate = [year, month, day].join('-');
 			dateArr.push(formatedDate);
 		}
+		this.setDatesArr(dateArr);
 		this.renderTasks(dateArr);
 	}
 

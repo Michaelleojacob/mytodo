@@ -45,7 +45,9 @@ export default class NavButtonEvent {
 	}
 	static clearTaskArea() {
 		this.taskParent.childNodes.forEach(child => {
-			removeAllChildNodes(child);
+			if (child !== null) {
+				removeAllChildNodes(child);
+			}
 		});
 	}
 }
