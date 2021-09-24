@@ -4,6 +4,7 @@ import TodayWeekMonth from './TodayWeekMonth';
 import removeAllChildNodes from '../../removeAllChildNodes/removeAllChildNodes';
 import TargetToday from './targetToday';
 import TargetWeek from './targetWeek';
+import TargetMonth from './TargetMonth';
 
 export default class NavButtonEvent {
 	static handleNavDelegation(obj) {
@@ -33,7 +34,7 @@ export default class NavButtonEvent {
 			} else if (cList.contains('projTask')) TargetProjects.init(e, this.obj);
 			else if (cList.contains('today')) TargetToday.init(this.obj);
 			else if (cList.contains('week')) TargetWeek.init(this.obj);
-			else if (cList.contains('month')) console.log('month');
+			else if (cList.contains('month')) TargetMonth.init(this.obj);
 		});
 	}
 	static getTargetStatus() {
