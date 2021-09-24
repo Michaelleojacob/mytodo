@@ -43,7 +43,7 @@ export default class AddProjectsToUI {
 				domFactory.domElement({
 					type: 'button',
 					text: this.project.name,
-					classes: ['navButton', 'projTask', 'sortByFrom', trimmedName],
+					classes: ['navButton', 'projTask', trimmedName],
 				}),
 				domFactory.domElement({
 					classes: ['deleteProj'],
