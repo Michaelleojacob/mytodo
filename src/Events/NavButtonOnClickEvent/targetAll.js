@@ -5,7 +5,6 @@ import NewItemEvent from '../newItemEvent/NewItemEvent';
 
 export default class TargetAll {
 	static init({ titleParent, tasksParent, newbtnParent }) {
-		// console.log(obj);
 		this.titleParent = titleParent;
 		this.tasksParent = tasksParent;
 		this.newbtnParent = newbtnParent;
