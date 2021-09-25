@@ -15,7 +15,7 @@ export default class TargetAll {
 	static renderTitle() {
 		this.titleParent.appendChild(
 			domFactory.domElement({
-				text: 'All',
+				text: 'all',
 			})
 		);
 	}
