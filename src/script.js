@@ -4,7 +4,6 @@ import Events from './Events/Events';
 (function () {
 	const app = {
 		init() {
-			localStorage.clear();
 			this.renderUI();
 			this.addEvents();
 			this.triggerClickAll();
