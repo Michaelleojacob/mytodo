@@ -1,9 +1,0 @@
-.projectItemWrapper {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	align-content: center;
-	align-items: center;
-	justify-content: center;
-	width: inherit;
-}

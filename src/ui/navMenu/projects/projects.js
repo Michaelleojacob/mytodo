@@ -1,4 +1,3 @@
-import './projects.css';
 import domFactory from '../../../domFactory/domFactory';
 import Storage from '../../../Storage/Storage';
 import NewItemEvent from '../../../Events/newItemEvent/NewItemEvent';

@@ -1,4 +1,3 @@
-import '../navMenu.css';
 import domFactory from '../../../domFactory/domFactory';
 
 export default class AllTodayWeekMonth {

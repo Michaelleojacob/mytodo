@@ -1,4 +1,3 @@
-import './taskArea.css';
 import domFactory from '../../domFactory/domFactory';
 import Events from '../../Events/Events';
 

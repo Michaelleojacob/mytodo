@@ -6,13 +6,9 @@ import TodayWeekMonth from './NavButtonOnClickEvent/TodayWeekMonth';
 export default class Events {
 	static init() {
 		// console.log(this.taskAreaDomObj);
-		this.handlecCloseNavMenu();
 		this.handleNavButtonEvent();
 		this.handleNewItemEvent();
 		this.cacheForTodayWeekMonth();
-	}
-	static handlecCloseNavMenu() {
-		closeNavMenu.closeNavMenu();
 	}
 	static handleNavButtonEvent() {
 		NavButtonEvent.handleNavDelegation(this.taskAreaDomObj);
