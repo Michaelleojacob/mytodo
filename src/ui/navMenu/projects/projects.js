@@ -1,3 +1,4 @@
+import './projects.css';
 import domFactory from '../../../domFactory/domFactory';
 import Storage from '../../../Storage/Storage';
 import NewItemEvent from '../../../Events/newItemEvent/NewItemEvent';
@@ -36,17 +37,24 @@ export default class AddProjectsToUI {
 		this.project = item;
 		const trimmedName = this.project.name.trim().split(' ').join('');
 		const elementToRender = domFactory.domElement({
-			classes: ['navbutton', 'projectItemWrapper'],
+			type: 'button',
+			classes: [
+				'navbutton',
+				'projectItemWrapper',
+				'navButton',
+				'projTask',
+				trimmedName,
+			],
 			attributes: { id: this.project.id },
 			children: [
+				domFactory.domElement({}),
 				domFactory.domElement({
-					type: 'button',
-					text: this.project.name,
-					classes: ['navButton', 'projTask', trimmedName],
+					// type: 'div',
+					text: trimmedName,
+					classes: ['projText'],
 				}),
 				domFactory.domElement({
 					classes: ['deleteProj'],
-					type: 'button',
 					text: 'X',
 					events: [{ type: 'click', handler: this.deleteProject }],
 				}),

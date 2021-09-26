@@ -1,0 +1,25 @@
+.projectsWrapper {
+	display: flex;
+	flex-direction: column;
+	width: inherit;
+}
+
+.projectItemWrapper {
+	display: grid;
+	border: 1px solid var(--mainBgColor);
+	grid-template-columns: 1fr 8fr 1fr;
+}
+
+.projText {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.deleteProj {
+	visibility: hidden;
+	color: var(--delete);
+}
+
+.projectItemWrapper:hover .deleteProj {
+	visibility: visible;
+}

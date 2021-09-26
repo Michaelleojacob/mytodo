@@ -13,8 +13,9 @@ export default class NewItemEvent {
 		this.renderTasks = document.querySelector('.renderTasks');
 	}
 	static formDOMTree(formID, formText) {
-		this.parent = parent;
+		formText = formText.trim();
 		this.formTree = domFactory.domElement({
+			classes: [`formSubTree`],
 			children: [
 				domFactory.domElement({
 					type: 'button',
@@ -23,16 +24,19 @@ export default class NewItemEvent {
 				}),
 				domFactory.domElement({
 					type: 'form',
+					classes: [`formInputAndBtnWrap`],
 					attributes: { id: formID },
-					// attributes: { id: myid, style: 'display:none' },
+					// attributes: { id: formID, style: 'display:none' },
 					// attributes: { style: 'display:none' },
 					events: [{ type: 'submit', handler: this.getFormInput }],
 					children: [
 						domFactory.domElement({
+							classes: [`formInput`],
 							type: 'input',
 							attributes: { placeholder: `new ${formText}` },
 						}),
 						domFactory.domElement({
+							classes: [`formButtonWrap`],
 							children: [
 								domFactory.domElement({
 									type: 'button',
