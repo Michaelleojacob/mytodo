@@ -1,3 +1,4 @@
+import './header.css';
 import domFactory from '../../domFactory/domFactory';
 import closeNavMenu from '../../Events/closeNavMenu/closeNavMenu';
 
@@ -17,23 +18,25 @@ export default class Header {
 					children: [
 						//icon
 						domFactory.domElement({
-							classes: ['checkIcon', 'fas', 'fa-check'],
+							classes: ['checkIcon', 'fas', 'fa-check-square'],
 						}),
 						//text
 						domFactory.domElement({
 							classes: ['headerText'],
-							text: `header`,
+							text: `Todo List`,
 						}),
 					],
 				}),
 				//burger
 				domFactory.domElement({
-					type: 'button',
+					// type: 'button',
 					classes: ['burger'],
+					// classes: ['burger', 'fas', 'fa-bars'],
 					events: [{ type: 'click', handler: closeNavMenu.init }],
 					children: [
 						domFactory.domElement({
-							classes: ['fas', 'fa-bars'],
+							type: 'button',
+							classes: ['icon', 'fas', 'fa-bars'],
 						}),
 					],
 				}),

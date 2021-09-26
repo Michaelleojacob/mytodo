@@ -1,3 +1,16 @@
+:root {
+	--mainWidth: 300px;
+	--mainBgColor: #3d3d3d;
+	--hoverColor: #7272724f;
+}
+
+body {
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	background: #3d3d3d;
+	color: #f1f0ea;
+}
+
 button,
 input[type='submit'],
 input[type='reset'] {
@@ -20,4 +33,30 @@ svg {
 
 .svg {
 	pointer-events: none;
+}
+
+#container {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+#container > * {
+	width: var(--mainWidth);
+	margin-top: 1em;
+}
+
+button:hover {
+	/* opacity: 75%; */
+	background: #7272724f;
+	border: 1px solid #7272724f;
+	border-radius: 8px;
+}
+button:active {
+	background: #7272727e;
+	border: 1px solid #7272727e;
+	border-radius: 8px;
 }
