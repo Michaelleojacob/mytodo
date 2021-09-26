@@ -41,6 +41,7 @@ export default class NewItemEvent {
 								domFactory.domElement({
 									type: 'button',
 									text: 'cancel',
+									events: [{ type: 'click', handler: this.closeNavFromCancel }],
 								}),
 							],
 						}),
@@ -57,6 +58,10 @@ export default class NewItemEvent {
 	}
 	static toggleInputArea(e) {
 		toggleDisplay(e.target.parentNode.childNodes[1]);
+	}
+	static closeNavFromCancel(e) {
+		console.log(e.target.parentNode.parentNode);
+		toggleDisplay(e.target.parentNode.parentNode);
 	}
 	static getFormInput(e) {
 		e.preventDefault();
