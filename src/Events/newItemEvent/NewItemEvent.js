@@ -60,8 +60,9 @@ export default class NewItemEvent {
 		toggleDisplay(e.target.parentNode.childNodes[1]);
 	}
 	static closeNavFromCancel(e) {
-		console.log(e.target.parentNode.parentNode);
-		toggleDisplay(e.target.parentNode.parentNode);
+		const targetParent = e.target.parentNode.parentNode;
+		targetParent[0].value = '';
+		toggleDisplay(targetParent);
 	}
 	static getFormInput(e) {
 		e.preventDefault();
