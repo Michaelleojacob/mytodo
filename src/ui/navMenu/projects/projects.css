@@ -8,6 +8,7 @@
 	display: grid;
 	border: 1px solid var(--navBgColor);
 	grid-template-columns: 1fr 8fr 1fr;
+	max-width: 400px;
 }
 
 .projText {
