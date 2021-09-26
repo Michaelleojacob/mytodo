@@ -1,18 +1,52 @@
+.navWrap {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+}
+
+.navWrap > * {
+	margin: 3px 0px;
+}
+
 .allTodayMonthWrapper {
 	display: flex;
 	flex-direction: column;
+	width: calc(100% - 25px);
+}
+.allTodayMonthWrapper > * {
+	display: flex;
+	flex-direction: row;
 	flex-wrap: nowrap;
 	align-content: center;
 	justify-content: center;
 	align-items: center;
 }
+.navButton {
+	display: grid;
+	grid-template-columns: 2.5em 4em;
+}
 
-.projectsWrapper {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	align-content: center;
-	justify-content: center;
-	align-items: center;
-	width: inherit;
+.allTodayMonthWrapper > * {
+	border: 1px solid var(--mainBgColor);
+	margin: 1px 0px;
+}
+
+.staticProject {
+	margin-top: 20px;
+}
+
+.navButtonText {
+	pointer-events: none;
+	display: grid;
+	justify-items: center;
+	margin-right: 0.5em;
+}
+
+.navIcon {
+	display: grid;
+	margin-left: 0.5em;
 }
