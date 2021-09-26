@@ -43,9 +43,14 @@ export default class IndividualTasksHTML {
 				domFactory.domElement({
 					classes: ['deleteTask'],
 					type: 'button',
-					text: 'X',
+					// text: 'X',
 					attributes: { style: 'visibility:hidden' },
 					events: [{ type: 'click', handler: this.deleteTask }],
+					children: [
+						domFactory.domElement({
+							classes: ['fas', 'fa-times'],
+						}),
+					],
 				}),
 			],
 		});

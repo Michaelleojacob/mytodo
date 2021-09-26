@@ -53,6 +53,7 @@ export default class TodayWeekMonth {
 	static renderTitle(title) {
 		this.titleParent.appendChild(
 			domFactory.domElement({
+				classes: ['mytitle'],
 				text: title,
 			})
 		);

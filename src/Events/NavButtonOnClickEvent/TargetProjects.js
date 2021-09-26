@@ -16,6 +16,7 @@ export default class TargetProjects {
 	static renderTitle() {
 		this.titleParent.appendChild(
 			domFactory.domElement({
+				classes: ['mytitle'],
 				text: this.titleText,
 			})
 		);

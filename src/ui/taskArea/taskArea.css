@@ -1,24 +1,36 @@
 .taskWrapper {
+	display: flex;
 	font-size: 1.5em;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
 }
 
 .taskWrapper > * {
 	margin-top: 20px;
 	border: 1px solid inherit;
+	width: inherit;
 }
 
 .taskTitleWrapper {
+	max-width: 300px;
 	font-size: calc(1.5em + 10px);
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	white-space: initial;
+	overflow: clip;
+}
+
+.renderTasks {
+	width: inherit;
 }
 
 .taskwrap {
 	display: grid;
 	width: inherit;
 	white-space: nowrap;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 10fr 1fr;
 	border: 1px solid var(--mainBgColor);
 }
 
@@ -28,14 +40,62 @@
 	border-radius: 8px;
 }
 
-.taskwrap > * {
-	border: 1px solid var(--mainBgColor);
-}
-
-.childwrap > * {
-	border: 1px solid var(--mainBgColor);
-}
-
 .dateThing {
 	max-width: 192px;
+}
+
+.childwrap {
+	justify-self: center;
+	max-width: 500px;
+	margin: 0px 10px 0px 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 10px;
+}
+
+.deleteTask {
+	color: var(--delete);
+}
+
+.modifyName {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.modifyName:hover {
+	max-width: 0px;
+	overflow: visible;
+	word-wrap: normal;
+	font-weight: 600;
+}
+.modifyName:hover ~ .from {
+	visibility: hidden;
+}
+.modifyName:hover ~ .dateThing {
+	visibility: hidden;
+}
+
+.from {
+	white-space: nowrap;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.from:hover {
+	max-width: 0px;
+	overflow: visible;
+	white-space: initial;
+	font-weight: 600;
+}
+
+.from:hover ~ .modifyName {
+	visibility: hidden;
+}
+.from:hover ~ .dateThing {
+	visibility: hidden;
+}
+
+.mytitle {
+	white-space: initial;
+	overflow: hidden;
 }

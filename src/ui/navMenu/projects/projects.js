@@ -59,7 +59,7 @@ export default class AddProjectsToUI {
 					classes: ['deleteProj'],
 					children: [
 						domFactory.domElement({
-							classes: ['fas', 'fa-minus-circle'],
+							classes: ['fas', 'fa-times'],
 						}),
 					],
 					// events: [{ type: 'click', handler: this.deleteProject }],
