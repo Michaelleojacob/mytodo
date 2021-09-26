@@ -1,5 +1,6 @@
 import '../navMenu.css';
 import domFactory from '../../../domFactory/domFactory';
+import AddProjectsToUI from '../projects/projects';
 
 export default class AllTodayWeekMonth {
 	static init(parent) {
@@ -24,6 +25,12 @@ export default class AllTodayWeekMonth {
 			const element = domFactory.domElement({
 				type: 'button',
 				classes: ['navButton', name],
+				events: [
+					{
+						type: 'click',
+						handler: AddProjectsToUI.renameLater,
+					},
+				],
 				children: [
 					//icon
 					domFactory.domElement({

@@ -20,6 +20,7 @@ export default class NavButtonEvent {
 
 	static handleClick() {
 		this.navWrap.addEventListener('click', e => {
+			// console.log(e.target);
 			if (!e.target.classList.contains('navButton')) return;
 			const target = e.target;
 			const cList = target.classList;
@@ -28,7 +29,8 @@ export default class NavButtonEvent {
 
 			if (cList.contains('all')) {
 				TargetAll.init(this.obj);
-			} else if (cList.contains('projTask')) TargetProjects.init(e, this.obj);
+			} else if (cList.contains('projectItemWrapper'))
+				TargetProjects.init(e, this.obj);
 			else if (cList.contains('today'))
 				TodayWeekMonth.renderTitleAndTasks('today');
 			else if (cList.contains('week'))

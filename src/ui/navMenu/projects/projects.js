@@ -46,17 +46,23 @@ export default class AddProjectsToUI {
 				trimmedName,
 			],
 			attributes: { id: this.project.id },
+			events: [{ type: 'click', handler: this.renameLater }],
 			children: [
 				domFactory.domElement({}),
 				domFactory.domElement({
 					// type: 'div',
-					text: trimmedName,
+					text: item.name,
 					classes: ['projText'],
 				}),
 				domFactory.domElement({
+					// type: `button`,
 					classes: ['deleteProj'],
-					text: 'X',
-					events: [{ type: 'click', handler: this.deleteProject }],
+					children: [
+						domFactory.domElement({
+							classes: ['fas', 'fa-minus-circle'],
+						}),
+					],
+					// events: [{ type: 'click', handler: this.deleteProject }],
 				}),
 			],
 		});
@@ -66,13 +72,17 @@ export default class AddProjectsToUI {
 		this.newprojbtn = NewItemEvent.formDOMTree('newproject', 'project');
 		this.parent.appendChild(this.newprojbtn);
 	}
-	static deleteProject(e) {
-		const project = e.target.parentNode;
-		Storage.removeProj(project.id);
+	static renameLater = e => {
+		if (e.target.classList.contains('deleteProj')) {
+			return this.deleteProject(e.target);
+		}
+	};
+	static deleteProject(clickTarget) {
+		clickTarget.parentNode.remove();
+		Storage.removeProj(clickTarget.parentNode.id);
 		Storage.removeTodosOnProjectDelete(
-			project.childNodes[0].textContent.trim()
+			clickTarget.parentNode.textContent.trim()
 		);
-		e.target.parentNode.remove();
 		NavButtonEvent.clearTaskArea();
 	}
 }

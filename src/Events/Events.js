@@ -10,6 +10,7 @@ export default class Events {
 		this.handleNewItemEvent();
 		this.cacheForTodayWeekMonth();
 	}
+
 	static handleNavButtonEvent() {
 		NavButtonEvent.handleNavDelegation(this.taskAreaDomObj);
 	}

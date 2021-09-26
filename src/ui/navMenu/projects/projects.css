@@ -13,6 +13,7 @@
 .projText {
 	white-space: nowrap;
 	overflow: hidden;
+	pointer-events: none;
 }
 
 .deleteProj {
