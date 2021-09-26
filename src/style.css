@@ -45,10 +45,10 @@ svg {
 	flex-wrap: nowrap;
 }
 
-#container > * {
+/* #container > * {
 	width: var(--mainWidth);
 	margin-top: 1em;
-}
+} */
 
 button:hover {
 	background: #7272724f;

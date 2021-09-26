@@ -1,3 +1,12 @@
+:root {
+	--navBgColor: #302e2e;
+}
+
+.navWrapOutside {
+	width: 100%;
+	background-color: var(--navBgColor);
+}
+
 .navWrap {
 	display: flex;
 	flex-direction: column;
@@ -15,7 +24,7 @@
 .allTodayMonthWrapper {
 	display: flex;
 	flex-direction: column;
-	width: calc(100% - 25px);
+	width: calc(60% - 25px);
 }
 .allTodayMonthWrapper > * {
 	display: flex;
@@ -31,7 +40,7 @@
 }
 
 .allTodayMonthWrapper > * {
-	border: 1px solid var(--mainBgColor);
+	border: 1px solid var(--navBgColor);
 	margin: 1px 0px;
 }
 

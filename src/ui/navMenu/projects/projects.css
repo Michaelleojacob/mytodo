@@ -6,7 +6,7 @@
 
 .projectItemWrapper {
 	display: grid;
-	border: 1px solid var(--mainBgColor);
+	border: 1px solid var(--navBgColor);
 	grid-template-columns: 1fr 8fr 1fr;
 }
 

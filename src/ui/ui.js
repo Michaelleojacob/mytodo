@@ -15,22 +15,27 @@ export default class UI {
 		Header.init(this.parent);
 	}
 	static navMenu() {
-		this.navWrap();
+		this.makeNavWrap();
 		this.renderAllTodayWeekMonthButtons();
 		this.renderProjects();
 	}
-	static navWrap() {
-		return (this.navWrap = domFactory.elementWithMultipleClasses({
-			elementName: 'navWrap',
-			classes: ['navWrap', 'closeOnClick'],
-			parent: this.parent,
-		}));
+	static makeNavWrap() {
+		this.navWrap = domFactory.domElement({
+			classes: ['navWrapOutside'],
+			children: [
+				domFactory.domElement({
+					classes: ['navWrap'],
+				}),
+			],
+		});
+		this.navParent = this.navWrap.childNodes[0];
+		this.parent.appendChild(this.navWrap);
 	}
 	static renderAllTodayWeekMonthButtons() {
-		AllTodayWeekMonth.init(this.navWrap);
+		AllTodayWeekMonth.init(this.navParent);
 	}
 	static renderProjects() {
-		AddProjectsToUI.init(this.navWrap);
+		AddProjectsToUI.init(this.navParent);
 	}
 	static tasks() {
 		TaskArea.init(this.parent);

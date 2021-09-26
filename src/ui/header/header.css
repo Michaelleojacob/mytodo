@@ -1,26 +1,34 @@
+:root {
+	--marginBy: 30px;
+}
+
 .headerWrap {
 	display: flex;
-	justify-content: space-between;
-	font-size: 2.5em;
-	align-items: center;
-	align-content: center;
-	flex-wrap: nowrap;
-	flex-direction: row;
+	font-size: 3em;
+	background: #202020;
+	width: 100%;
+	padding: var(--marginBy);
+	justify-content: center;
+}
+
+.holdsHeaderChildren {
+	width: 500px;
+	display: flex;
+	justify-content: space-around;
+}
+.headerText {
+	margin-left: 10px;
 }
 
 .siblingWrapper {
 	display: flex;
+	justify-self: center;
 	flex-direction: row;
 }
-
-.siblingWrapper > * {
-	margin: 0px 0px 0px 10px;
-}
-
 .burger {
-	margin: 0px 10px 0px 10px;
-	/* border: 1px solid var(--mainBgColor); */
+	justify-self: center;
 }
+
 .burger:hover {
 	opacity: 75%;
 	cursor: pointer;

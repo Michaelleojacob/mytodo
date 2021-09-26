@@ -1,0 +1,41 @@
+.taskWrapper {
+	font-size: 1.5em;
+}
+
+.taskWrapper > * {
+	margin-top: 20px;
+	border: 1px solid inherit;
+}
+
+.taskTitleWrapper {
+	font-size: calc(1.5em + 10px);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.taskwrap {
+	display: grid;
+	width: inherit;
+	white-space: nowrap;
+	grid-template-columns: 1fr 1fr;
+	border: 1px solid var(--mainBgColor);
+}
+
+.taskwrap:hover {
+	background: #7272724f;
+	border: 1px solid #7272724f;
+	border-radius: 8px;
+}
+
+.taskwrap > * {
+	border: 1px solid var(--mainBgColor);
+}
+
+.childwrap > * {
+	border: 1px solid var(--mainBgColor);
+}
+
+.dateThing {
+	max-width: 192px;
+}

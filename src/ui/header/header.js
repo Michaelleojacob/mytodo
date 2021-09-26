@@ -12,31 +12,36 @@ export default class Header {
 		this.headerTree = domFactory.domElement({
 			classes: ['headerWrap'],
 			children: [
-				//icon + text === sibling wrapper?
 				domFactory.domElement({
-					classes: ['siblingWrapper'],
+					classes: ['holdsHeaderChildren'],
 					children: [
-						//icon
+						//icon + text === sibling wrapper?
 						domFactory.domElement({
-							classes: ['checkIcon', 'fas', 'fa-check-square'],
+							classes: ['siblingWrapper'],
+							children: [
+								//icon
+								domFactory.domElement({
+									classes: ['checkIcon', 'fas', 'fa-check-square'],
+								}),
+								//text
+								domFactory.domElement({
+									classes: ['headerText'],
+									text: `Todo List`,
+								}),
+							],
 						}),
-						//text
+						//burger
 						domFactory.domElement({
-							classes: ['headerText'],
-							text: `Todo List`,
-						}),
-					],
-				}),
-				//burger
-				domFactory.domElement({
-					// type: 'button',
-					classes: ['burger'],
-					// classes: ['burger', 'fas', 'fa-bars'],
-					events: [{ type: 'click', handler: closeNavMenu.init }],
-					children: [
-						domFactory.domElement({
-							type: 'button',
-							classes: ['icon', 'fas', 'fa-bars'],
+							// type: 'button',
+							classes: ['burger'],
+							// classes: ['burger', 'fas', 'fa-bars'],
+							events: [{ type: 'click', handler: closeNavMenu.init }],
+							children: [
+								domFactory.domElement({
+									type: 'button',
+									classes: ['icon', 'fas', 'fa-bars'],
+								}),
+							],
 						}),
 					],
 				}),
