@@ -5,7 +5,6 @@ import NewItemEvent from '../newItemEvent/NewItemEvent';
 
 export default class TargetProjects {
 	static init(e, { titleParent, tasksParent, newbtnParent }) {
-		console.log(e);
 		this.titleText = e.target.textContent;
 		this.titleParent = titleParent;
 		this.tasksParent = tasksParent;

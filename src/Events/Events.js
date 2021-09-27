@@ -5,7 +5,6 @@ import TodayWeekMonth from './NavButtonOnClickEvent/TodayWeekMonth';
 
 export default class Events {
 	static init() {
-		// console.log(this.taskAreaDomObj);
 		this.handleNavButtonEvent();
 		this.handleNewItemEvent();
 		this.cacheForTodayWeekMonth();

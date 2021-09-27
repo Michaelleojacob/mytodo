@@ -26,9 +26,7 @@ export default class NewItemEvent {
 				domFactory.domElement({
 					type: 'form',
 					classes: [`formInputAndBtnWrap`],
-					// attributes: { id: formID },
 					attributes: { id: formID, style: 'display:none' },
-					// attributes: { style: 'display:none' },
 					events: [{ type: 'submit', handler: this.getFormInput }],
 					children: [
 						domFactory.domElement({
@@ -58,13 +56,13 @@ export default class NewItemEvent {
 		});
 		return this.formTree;
 	}
-	static listenNewItemButtonToOpenForm({ elementListening, toggler }) {
-		elementListening.addEventListener('click', () => {
-			toggleDisplay(toggler);
-		});
-	}
+
 	static toggleInputArea(e) {
-		toggleDisplay(e.target.parentNode.childNodes[1]);
+		const testing = e.target.parentNode.childNodes[1];
+		toggleDisplay(testing);
+		if (testing.style.display === 'flex') {
+			e.target.parentNode.childNodes[1].childNodes[0].focus();
+		}
 	}
 	static closeNavFromCancel(e) {
 		const targetParent = e.target.parentNode.parentNode;
@@ -94,9 +92,15 @@ export default class NewItemEvent {
 		}
 	}
 	static newProject(input) {
-		const newProject = new Projects(input);
-		AddProjectsToUI.renderSingleProject(newProject);
-		Storage.addProject(newProject);
+		const projectsObj = Storage.getProjects();
+		projectsObj.map(project => {
+			if (project.name === input) return;
+			else {
+				const newProject = new Projects(input);
+				AddProjectsToUI.renderSingleProject(newProject);
+				Storage.addProject(newProject);
+			}
+		});
 	}
 	static newAllTask(input) {
 		const newAllTask = new Todo(input, 'all');
