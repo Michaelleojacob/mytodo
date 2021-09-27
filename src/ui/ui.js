@@ -1,3 +1,4 @@
+import './mediaQueryLargeScreen.css';
 import domFactory from '../domFactory/domFactory';
 import Header from './header/header';
 import AllTodayWeekMonth from '../ui/navMenu/allTodayWeekMonth/allTodayWeekMonth';

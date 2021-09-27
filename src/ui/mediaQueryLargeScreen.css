@@ -1,0 +1,28 @@
+@media only screen and (min-width: 688px) {
+	#container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+		align-items: flex-start;
+	}
+	.headerWrap {
+		flex-basis: 100%;
+		font-size: 4em;
+	}
+	.navWrapOutside {
+		display: flex;
+		flex-basis: 30%;
+		height: 100vh;
+		align-items: flex-start;
+		flex-wrap: nowrap;
+	}
+	.taskWrapper {
+		flex-basis: 70%;
+	}
+	.navWrap {
+		display: flex;
+		margin-top: 100px;
+	}
+}
