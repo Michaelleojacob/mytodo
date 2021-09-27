@@ -5,6 +5,9 @@
 .navWrapOutside {
 	width: 100%;
 	background-color: var(--navBgColor);
+	display: flex;
+	justify-content: center;
+	align-content: center;
 }
 
 .navWrap {
@@ -24,7 +27,7 @@
 .allTodayMonthWrapper {
 	display: flex;
 	flex-direction: column;
-	width: calc(60% - 25px);
+	/* width: calc(60% - 25px); */
 	max-width: 400px;
 }
 .allTodayMonthWrapper > * {

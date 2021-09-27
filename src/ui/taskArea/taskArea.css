@@ -38,7 +38,8 @@
 	width: inherit;
 	white-space: nowrap;
 	grid-template-columns: 10fr 1fr;
-	border: 1px solid var(--mainBgColor);
+	border: 1px solid var(--nocolor);
+	border-radius: 8px;
 	max-width: 400px;
 }
 

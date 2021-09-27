@@ -20,8 +20,9 @@ export default class NavButtonEvent {
 
 	static handleClick() {
 		this.navWrap.addEventListener('click', e => {
-			// console.log(e.target);
 			if (!e.target.classList.contains('navButton')) return;
+			console.log(e.target.classList);
+			console.log(e.target.textContent);
 			const target = e.target;
 			const cList = target.classList;
 			this.setTargetStatus(e.target.textContent.trim());

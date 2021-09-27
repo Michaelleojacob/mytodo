@@ -48,14 +48,23 @@ export default class AddProjectsToUI {
 			attributes: { id: this.project.id },
 			events: [{ type: 'click', handler: this.renameLater }],
 			children: [
-				domFactory.domElement({}),
 				domFactory.domElement({
-					// type: 'div',
-					text: item.name,
-					classes: ['projText'],
+					classes: ['ignorePlaceholder'],
 				}),
 				domFactory.domElement({
-					// type: `button`,
+					classes: ['holdsIconAndName'],
+					children: [
+						domFactory.domElement({
+							classes: ['fas', 'fa-folder'],
+						}),
+						domFactory.domElement({
+							text: item.name,
+							classes: ['projText'],
+						}),
+					],
+				}),
+				domFactory.domElement({
+					type: `button`,
 					classes: ['deleteProj'],
 					children: [
 						domFactory.domElement({

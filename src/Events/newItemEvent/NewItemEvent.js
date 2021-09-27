@@ -19,21 +19,22 @@ export default class NewItemEvent {
 			children: [
 				domFactory.domElement({
 					type: 'button',
-					text: `+ ${formText}`,
+					classes: ['makeGreen'],
+					text: `+${formText}`,
 					events: [{ type: 'click', handler: this.toggleInputArea }],
 				}),
 				domFactory.domElement({
 					type: 'form',
 					classes: [`formInputAndBtnWrap`],
-					attributes: { id: formID },
-					// attributes: { id: formID, style: 'display:none' },
+					// attributes: { id: formID },
+					attributes: { id: formID, style: 'display:none' },
 					// attributes: { style: 'display:none' },
 					events: [{ type: 'submit', handler: this.getFormInput }],
 					children: [
 						domFactory.domElement({
 							classes: [`formInput`],
 							type: 'input',
-							attributes: { placeholder: `new ${formText}` },
+							attributes: { placeholder: `create ${formText}` },
 						}),
 						domFactory.domElement({
 							classes: [`formButtonWrap`],
