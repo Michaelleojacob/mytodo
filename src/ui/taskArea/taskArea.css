@@ -11,6 +11,9 @@
 	border: 1px solid inherit;
 	width: inherit;
 }
+.taskWrapper > .newItemButtonWrapper {
+	font-size: 1.5em;
+}
 
 .taskTitleWrapper {
 	max-width: 300px;
@@ -24,6 +27,10 @@
 
 .renderTasks {
 	width: inherit;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: nowrap;
 }
 
 .taskwrap {
@@ -64,7 +71,6 @@
 }
 
 .modifyName:hover {
-	max-width: 0px;
 	overflow: visible;
 	word-wrap: normal;
 	font-weight: 600;
@@ -83,7 +89,6 @@
 }
 
 .from:hover {
-	max-width: 0px;
 	overflow: visible;
 	white-space: initial;
 	font-weight: 600;
@@ -99,4 +104,11 @@
 .mytitle {
 	white-space: initial;
 	overflow: hidden;
+}
+
+.newItemButtonWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: nowrap;
 }

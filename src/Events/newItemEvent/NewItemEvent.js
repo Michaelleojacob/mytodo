@@ -41,10 +41,12 @@ export default class NewItemEvent {
 								domFactory.domElement({
 									type: 'button',
 									text: 'submit',
+									classes: ['subbtn'],
 								}),
 								domFactory.domElement({
 									type: 'button',
 									text: 'cancel',
+									classes: ['canbtn'],
 									events: [{ type: 'click', handler: this.closeNavFromCancel }],
 								}),
 							],

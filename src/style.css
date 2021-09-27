@@ -3,6 +3,7 @@
 	--mainBgColor: #3d3d3d;
 	--hoverColor: #7272724f;
 	--delete: #c50e11;
+	--nocolor: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -25,6 +26,7 @@ input[type='reset'] {
 }
 
 input {
+	border-radius: 8px;
 	border: none;
 }
 

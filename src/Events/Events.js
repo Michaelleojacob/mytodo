@@ -1,4 +1,4 @@
-import closeNavMenu from './closeNavMenu/closeNavMenu';
+import './newItemEvent.css';
 import NavButtonEvent from './NavButtonOnClickEvent/NavButtonOnClickEvent';
 import NewItemEvent from './newItemEvent/NewItemEvent';
 import TodayWeekMonth from './NavButtonOnClickEvent/TodayWeekMonth';
