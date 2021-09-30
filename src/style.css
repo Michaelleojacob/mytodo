@@ -41,16 +41,7 @@ svg {
 #container {
 	display: flex;
 	flex-direction: column;
-	align-content: center;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: nowrap;
 }
-
-/* #container > * {
-	width: var(--mainWidth);
-	margin-top: 1em;
-} */
 
 button:hover {
 	background: #7272724f;

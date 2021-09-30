@@ -16,9 +16,16 @@ export default class UI {
 		Header.init(this.parent);
 	}
 	static navMenu() {
+		this.makeNavAndTaskAreaParent();
 		this.makeNavWrap();
 		this.renderAllTodayWeekMonthButtons();
 		this.renderProjects();
+	}
+	static makeNavAndTaskAreaParent() {
+		this.navTaskAreaParent = domFactory.domElement({
+			classes: ['navTaskAreaParent'],
+		});
+		this.parent.appendChild(this.navTaskAreaParent);
 	}
 	static makeNavWrap() {
 		this.navWrap = domFactory.domElement({
@@ -30,7 +37,7 @@ export default class UI {
 			],
 		});
 		this.navParent = this.navWrap.childNodes[0];
-		this.parent.appendChild(this.navWrap);
+		this.navTaskAreaParent.appendChild(this.navWrap);
 	}
 	static renderAllTodayWeekMonthButtons() {
 		AllTodayWeekMonth.init(this.navParent);
@@ -39,6 +46,6 @@ export default class UI {
 		AddProjectsToUI.init(this.navParent);
 	}
 	static tasks() {
-		TaskArea.init(this.parent);
+		TaskArea.init(this.navTaskAreaParent);
 	}
 }

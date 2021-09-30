@@ -91,16 +91,19 @@ export default class NewItemEvent {
 				break;
 		}
 	}
+
 	static newProject(input) {
+		let noDuplicateProject = true;
 		const projectsObj = Storage.getProjects();
 		projectsObj.map(project => {
-			if (project.name === input) return;
-			else {
-				const newProject = new Projects(input);
-				AddProjectsToUI.renderSingleProject(newProject);
-				Storage.addProject(newProject);
-			}
+			if (project.name === input) return (noDuplicateProject = false);
 		});
+		if (noDuplicateProject === true) {
+			const newProject = new Projects(input);
+			AddProjectsToUI.renderSingleProject(newProject);
+			Storage.addProject(newProject);
+		}
+		return;
 	}
 	static newAllTask(input) {
 		const newAllTask = new Todo(input, 'all');
