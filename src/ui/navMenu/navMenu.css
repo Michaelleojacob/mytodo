@@ -21,6 +21,10 @@
 	grid-template-columns: 3em 3em;
 	justify-items: start;
 }
+.projText {
+	white-space: nowrap;
+	overflow: hidden;
+}
 .projectsWrapper {
 	display: flex;
 	flex-direction: column;
@@ -38,4 +42,12 @@
 .staticProject {
 	display: flex;
 	justify-content: center;
+}
+
+.makeGreen {
+	align-self: center;
+	color: green;
+}
+.fa-folder {
+	color: brown;
 }

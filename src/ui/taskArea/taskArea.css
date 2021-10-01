@@ -12,6 +12,18 @@
 	display: grid;
 	grid-template-columns: auto 2em;
 }
+.taskwrap > * {
+	white-space: nowrap;
+	overflow: hidden;
+}
+.modifyName {
+	white-space: nowrap;
+	overflow: hidden;
+}
+.from {
+	white-space: nowrap;
+	overflow: hidden;
+}
 .childwrap {
 	display: grid;
 	grid-template-columns: 5em 5em 9em;
