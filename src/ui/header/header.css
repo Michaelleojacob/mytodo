@@ -1,0 +1,12 @@
+.headerWrap {
+	display: flex;
+	justify-content: center;
+}
+.holdsHeaderChildren {
+	display: flex;
+	flex-direction: row;
+}
+.siblingWrapper {
+	display: flex;
+	flex-direction: row;
+}

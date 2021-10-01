@@ -1,66 +1,17 @@
-@media only screen and (min-width: 688px) {
-	#container {
-	}
+@media only screen and (min-width: 768px) {
 	.navTaskAreaParent {
-		display: flex;
 		flex-direction: row;
-	}
-	.headerWrap {
-	}
-	.navWrapOutside {
-	}
-	.taskWrapper {
-	}
-	.navWrap {
-	}
-	.holdsHeaderChildren {
-	}
-	.taskTitleWrapper {
-	}
-	.taskwrap {
-	}
-	.dateThing {
-	}
-	.childwrap {
-	}
-	.newItemButtonWrapper {
 	}
 }
 
-@media only screen and (max-width: 688px) {
-	.holdsHeaderChildren {
+@media only screen and (max-width: 768px) {
+	.navTaskAreaParent {
+		flex-direction: column;
 	}
-	.formInput {
-	}
-	.formSubTree {
-	}
-	.holdsHeaderChildren {
-	}
-	.taskTitleWrapper {
-	}
-	.dateThing {
-	}
-	.taskWrapper {
-	}
-	.taskwrap {
-	}
-
-	.childwrap {
-	}
-	.projectItemWrapper {
-	}
-	.projText {
+	.navWrapOutside {
+		justify-content: center;
 	}
 	.allTodayMonthWrapper {
-	}
-	.navWrap {
-	}
-	.headerWrap {
-	}
-	.taskTitleWrapper {
-	}
-	.newItemButtonWrapper {
-	}
-	.newItemButtonWrapper {
+		align-items: center;
 	}
 }

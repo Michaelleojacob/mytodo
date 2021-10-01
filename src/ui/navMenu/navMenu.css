@@ -1,0 +1,41 @@
+.navTaskAreaParent {
+	display: flex;
+}
+.navWrapOutside {
+	width: 100%;
+}
+.navWrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.navWrap > * {
+	width: 100%;
+}
+.allTodayMonthWrapper {
+	display: flex;
+	flex-direction: column;
+}
+.allTodayMonthWrapper > * {
+	display: grid;
+	grid-template-columns: 3em 3em;
+	justify-items: start;
+}
+.projectsWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.projectsWrapper > * {
+	display: grid;
+	grid-template-columns: 0em 5em auto;
+	justify-items: start;
+}
+.holdsIconAndName {
+	display: grid;
+	grid-template-columns: 2em 2em;
+}
+.staticProject {
+	display: flex;
+	justify-content: center;
+}

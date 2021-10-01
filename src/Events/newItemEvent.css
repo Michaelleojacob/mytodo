@@ -1,0 +1,16 @@
+.formSubTree {
+	display: flex;
+	flex-direction: column;
+}
+.formInputAndBtnWrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.formButtonWrap {
+	display: flex;
+	flex-direction: row;
+	align-content: flex-end;
+	width: 100%;
+	justify-content: center;
+}
