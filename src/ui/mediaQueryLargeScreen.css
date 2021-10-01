@@ -1,6 +1,68 @@
 @media only screen and (min-width: 768px) {
+	#container {
+		height: 100vh;
+	}
 	.navTaskAreaParent {
 		flex-direction: row;
+		height: 100%;
+	}
+	.headerWrap {
+		height: 5em;
+	}
+	.holdsHeaderChildren > * {
+		font-size: 4em;
+	}
+	.navWrapOutside {
+		flex-basis: 15em;
+	}
+	.navWrap {
+		margin-top: 1em;
+		margin-left: 1em;
+	}
+	.navWrap > * {
+		display: flex;
+		align-items: flex-start;
+		font-size: 2em;
+	}
+	.staticProject {
+		justify-content: center;
+	}
+	.navWrap > .formSubTree {
+		align-items: center;
+	}
+	.taskWrapper {
+		flex-basis: auto;
+		align-items: flex-start;
+		align-content: flex-start;
+		width: 100%;
+	}
+	.taskTitleWrapper {
+		font-size: 3em;
+		align-self: center;
+	}
+	.taskWrapper > .newItemButtonWrapper {
+		font-size: 3em;
+		align-self: center;
+		margin-top: 1em;
+	}
+	.taskwrap {
+		font-size: 1.8em;
+	}
+	.renderTasks {
+		width: 100%;
+		margin-top: 1em;
+	}
+	.taskwrap {
+		display: grid;
+		grid-template-columns: 88% 1em;
+		margin-top: 0.5em;
+		width: 90%;
+		justify-content: center;
+	}
+	.childwrap {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 0.2em;
 	}
 }
 
@@ -33,6 +95,12 @@
 	.projectsWrapper > * {
 		margin-top: 0.2em;
 	}
+	.staticProject {
+		justify-content: center;
+	}
+	.projectsWrapper {
+		align-items: center;
+	}
 	.taskTitleWrapper {
 		font-size: 2em;
 		margin-top: 0.5em;
@@ -41,11 +109,18 @@
 		font-size: 1em;
 		width: 100%;
 		margin-top: 0.5em;
+		align-items: center;
 	}
 
 	.taskwrap {
 		margin-right: 0.2em;
 		margin-left: 0.2em;
+	}
+	.taskWrapper {
+		align-items: center;
+	}
+	.formInputAndButtonWrap {
+		align-items: center;
 	}
 	.taskWrapper > .newItemButtonWrapper {
 		font-size: 1.5em;
@@ -56,6 +131,12 @@
 	}
 	.deleteTask {
 		justify-content: start;
+	}
+	.formButtonWrap {
+		justify-content: center;
+	}
+	.makeGreen {
+		align-self: center;
 	}
 	.taskwrap {
 		display: grid;

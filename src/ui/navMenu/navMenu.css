@@ -33,7 +33,6 @@
 .projectsWrapper {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 .projectsWrapper > * {
 	display: grid;
@@ -47,11 +46,9 @@
 }
 .staticProject {
 	display: flex;
-	justify-content: center;
 }
 
 .makeGreen {
-	align-self: center;
 	color: green;
 }
 .fa-folder {

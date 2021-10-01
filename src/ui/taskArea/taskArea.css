@@ -1,12 +1,10 @@
 .taskWrapper {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 .renderTasks {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 .taskwrap > * {
 	white-space: nowrap;
