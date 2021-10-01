@@ -1,12 +1,21 @@
 .headerWrap {
 	display: flex;
 	justify-content: center;
+	background: black;
+	align-items: center;
 }
 .holdsHeaderChildren {
 	display: flex;
 	flex-direction: row;
+	width: 100%;
+	justify-content: center;
 }
 .siblingWrapper {
 	display: flex;
 	flex-direction: row;
+	margin-right: 2em;
+}
+
+.fa-check-square {
+	margin-right: 0.2em;
 }

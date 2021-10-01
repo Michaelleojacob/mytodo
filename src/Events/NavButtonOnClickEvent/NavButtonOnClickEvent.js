@@ -21,8 +21,11 @@ export default class NavButtonEvent {
 	static handleClick() {
 		this.navWrap.addEventListener('click', e => {
 			if (!e.target.classList.contains('navButton')) return;
+			if (e.target.classList.contains('deleteProj')) return;
 			const target = e.target;
 			const cList = target.classList;
+			console.log(target);
+			console.log(cList);
 			this.setTargetStatus(e.target.textContent.trim());
 			this.clearTaskArea();
 

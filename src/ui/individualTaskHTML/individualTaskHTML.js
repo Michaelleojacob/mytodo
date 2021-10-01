@@ -43,8 +43,6 @@ export default class IndividualTasksHTML {
 				domFactory.domElement({
 					classes: ['deleteTask'],
 					type: 'button',
-					// text: 'X',
-					attributes: { style: 'visibility:hidden' },
 					events: [{ type: 'click', handler: this.deleteTask }],
 					children: [
 						domFactory.domElement({
@@ -54,7 +52,6 @@ export default class IndividualTasksHTML {
 				}),
 			],
 		});
-		this.showDeleteOnHover(this.task);
 		return this.task;
 	}
 
@@ -97,12 +94,12 @@ export default class IndividualTasksHTML {
 		}, 1000);
 	}
 
-	static showDeleteOnHover(element) {
-		this.task.addEventListener('mouseover', () => {
-			element.childNodes[1].style.visibility = 'visible';
-		});
-		this.task.addEventListener('mouseout', () => {
-			element.childNodes[1].style.visibility = 'hidden';
-		});
-	}
+	// static showDeleteOnHover(element) {
+	// 	this.task.addEventListener('mouseover', () => {
+	// 		element.childNodes[1].style.visibility = 'visible';
+	// 	});
+	// 	this.task.addEventListener('mouseout', () => {
+	// 		element.childNodes[1].style.visibility = 'hidden';
+	// 	});
+	// }
 }

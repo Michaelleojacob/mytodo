@@ -14,3 +14,9 @@
 	width: 100%;
 	justify-content: center;
 }
+.subbtn {
+	color: green;
+}
+.canbtn {
+	color: red;
+}

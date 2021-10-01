@@ -6,11 +6,7 @@
 .renderTasks {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-}
-.taskwrap {
-	display: grid;
-	grid-template-columns: auto 2em;
+	align-items: center;
 }
 .taskwrap > * {
 	white-space: nowrap;
@@ -23,8 +19,4 @@
 .from {
 	white-space: nowrap;
 	overflow: hidden;
-}
-.childwrap {
-	display: grid;
-	grid-template-columns: 5em 5em 9em;
 }

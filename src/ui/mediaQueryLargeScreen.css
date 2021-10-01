@@ -4,14 +4,104 @@
 	}
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
 	.navTaskAreaParent {
 		flex-direction: column;
 	}
 	.navWrapOutside {
 		justify-content: center;
 	}
+	.navWrap > * {
+		font-size: 1.5em;
+		margin-top: 0.5em;
+	}
 	.allTodayMonthWrapper {
 		align-items: center;
 	}
+	.siblingWrapper > * {
+		font-size: 2.5em;
+	}
+	.burger {
+		font-size: 2.5em;
+	}
+	.headerWrap {
+		height: 4em;
+	}
+	.allTodayMonthWrapper > * {
+		margin-top: 0.2em;
+	}
+	.projectsWrapper > * {
+		margin-top: 0.2em;
+	}
+	.taskTitleWrapper {
+		font-size: 2em;
+		margin-top: 0.5em;
+	}
+	.renderTasks {
+		font-size: 1em;
+		width: 100%;
+		margin-top: 0.5em;
+	}
+
+	.taskwrap {
+		margin-right: 0.2em;
+		margin-left: 0.2em;
+	}
+	.taskWrapper > .newItemButtonWrapper {
+		font-size: 1.5em;
+		margin-top: 0.5em;
+	}
+	.dateThing {
+		max-width: 8.7em;
+	}
+	.deleteTask {
+		justify-content: start;
+	}
+	.taskwrap {
+		display: grid;
+		grid-template-columns: 90% 1em;
+		margin-top: 0.5em;
+		width: 90%;
+		justify-content: center;
+	}
+	.childwrap {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 0.2em;
+	}
+	.subbtn {
+		margin-right: 1.2em;
+	}
+	.formInput {
+		max-width: 10em;
+	}
 }
+
+@media only screen and (max-width: 325px) {
+	.taskwrap {
+		display: grid;
+		grid-template-columns: 9fr 1em;
+		margin-top: 0.5em;
+		width: 90%;
+		justify-content: center;
+	}
+	.childwrap {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 0.2em;
+	}
+}
+/* @media only screen and (max-width: 500px) {
+	.taskwrap {
+		display: grid;
+		grid-template-columns: 95% 1em;
+		margin-top: 0.5em;
+		width: 90%;
+		justify-content: center;
+	}
+	.childwrap {
+		display: grid;
+		grid-template-columns: 20% 20% 60%;
+		gap: 0.2em;
+	}
+} */

@@ -3,6 +3,7 @@
 }
 .navWrapOutside {
 	width: 100%;
+	background: rgb(44, 44, 44);
 }
 .navWrap {
 	display: flex;
@@ -21,9 +22,13 @@
 	grid-template-columns: 3em 3em;
 	justify-items: start;
 }
+.navButtonText {
+	pointer-events: none;
+}
 .projText {
 	white-space: nowrap;
 	overflow: hidden;
+	pointer-events: none;
 }
 .projectsWrapper {
 	display: flex;
@@ -38,6 +43,7 @@
 .holdsIconAndName {
 	display: grid;
 	grid-template-columns: 2em 2em;
+	pointer-events: none;
 }
 .staticProject {
 	display: flex;
