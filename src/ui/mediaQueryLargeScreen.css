@@ -7,7 +7,7 @@
 		height: 100%;
 	}
 	.headerWrap {
-		height: 5em;
+		height: 7em;
 	}
 	.holdsHeaderChildren > * {
 		font-size: 4em;
@@ -28,6 +28,7 @@
 	}
 	.staticProject {
 		justify-content: center;
+		margin-top: 1.5em;
 	}
 	.navWrap > .formSubTree {
 		align-items: center;
@@ -49,9 +50,11 @@
 	.mytitle {
 		overflow: hidden;
 		white-space: nowrap;
+		margin-top: 0.3em;
 	}
 	.allTodayMonthWrapper > * {
 		align-self: center;
+		margin-top: 0.2em;
 	}
 	.taskWrapper > .newItemButtonWrapper {
 		font-size: 3em;
@@ -106,6 +109,9 @@
 	}
 	.footerHolder > * {
 		font-size: 2em;
+	}
+	.projectsWrapper > * {
+		margin-top: 0.3em;
 	}
 }
 
