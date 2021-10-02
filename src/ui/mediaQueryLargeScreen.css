@@ -89,6 +89,7 @@
 		justify-items: start;
 		overflow: hidden;
 		white-space: nowrap;
+		gap: 0.1em;
 	}
 	.navWrap > .formInput {
 		max-width: 2em;
@@ -171,6 +172,7 @@
 	}
 	.holdsIconAndName {
 		grid-template-columns: 1em 1fr;
+		gap: 0.1em;
 	}
 	.projText {
 		text-align: start;
@@ -180,6 +182,7 @@
 	}
 	.deleteTask {
 		justify-content: start;
+		font-size: 1.5em;
 	}
 	.formButtonWrap {
 		justify-content: center;
@@ -189,7 +192,7 @@
 	}
 	.taskwrap {
 		display: grid;
-		grid-template-columns: 90% 1em;
+		grid-template-columns: 90% 1.5em;
 		margin-top: 0.5em;
 		width: 90%;
 		justify-content: center;
@@ -199,6 +202,7 @@
 		grid-template-columns: 1fr 1fr 1fr;
 		gap: 0.2em;
 		align-items: center;
+		font-size: 1.5em;
 	}
 	.subbtn {
 		margin-right: 1.2em;
