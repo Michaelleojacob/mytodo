@@ -1,6 +1,7 @@
 .footerHolder {
 	display: flex;
 	flex-wrap: nowrap;
+	align-items: center;
 }
 .footerText {
 	margin-right: 1em;
@@ -10,4 +11,20 @@
 	width: 100%;
 	justify-content: center;
 	margin-top: 3em;
+}
+
+.footerHolder > button {
+	border: 1px solid transparent;
+	margin-left: 0.5em;
+}
+
+.fa-copyright {
+	color: #ffaa00;
+}
+
+.fa-linkedin {
+	color: #0077b5;
+}
+.fa-code {
+	color: lime;
 }

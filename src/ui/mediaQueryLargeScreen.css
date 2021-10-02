@@ -100,6 +100,9 @@
 	.newItemButtonWrapper > .formSubTree:nth-child(1):nth-child(1) {
 		max-width: 8em;
 	}
+	.footerHolder > * {
+		font-size: 2em;
+	}
 }
 
 @media only screen and (max-width: 767px) {
@@ -211,6 +214,9 @@
 	.formButtonWrap {
 		max-width: 5em;
 		align-self: center;
+	}
+	.footerHolder {
+		font-size: 1.5em;
 	}
 }
 
