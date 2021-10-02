@@ -24,8 +24,6 @@ export default class NavButtonEvent {
 			if (e.target.classList.contains('deleteProj')) return;
 			const target = e.target;
 			const cList = target.classList;
-			console.log(target);
-			console.log(cList);
 			this.setTargetStatus(e.target.textContent.trim());
 			this.clearTaskArea();
 

@@ -2,11 +2,13 @@ import Storage from '../../Storage/Storage';
 import domFactory from '../../domFactory/domFactory';
 import IndividualTasksHTML from '../../ui/individualTaskHTML/individualTaskHTML';
 import NavButtonEvent from './NavButtonOnClickEvent';
+import Footer from '../../ui/footer/footer';
 
 export default class TodayWeekMonth {
-	static init({ titleParent, tasksParent }) {
+	static init({ titleParent, tasksParent, footerParent }) {
 		this.titleParent = titleParent;
 		this.tasksParent = tasksParent;
+		this.footerParent = footerParent;
 		this.dates = [];
 		this.status = null;
 		this.tasksParent.addEventListener('change', this.myfunc);
@@ -74,6 +76,7 @@ export default class TodayWeekMonth {
 		}
 		this.setDatesArr(dateArr);
 		this.renderTasks(dateArr);
+		this.renderFooter();
 	}
 
 	static renderTasks(el) {
@@ -88,5 +91,8 @@ export default class TodayWeekMonth {
 		arr.map(task => {
 			this.tasksParent.appendChild(IndividualTasksHTML.makeOneTask(task));
 		});
+	}
+	static renderFooter() {
+		Footer.init(this.footerParent);
 	}
 }

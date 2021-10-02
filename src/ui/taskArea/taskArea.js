@@ -9,6 +9,7 @@ export default class TaskArea {
 		this.taskTitle();
 		this.renderTasksHere();
 		this.newItemButtonArea();
+		this.footer();
 		this.getTaskAreaElements();
 	}
 	static taskAreaWrapper() {
@@ -35,12 +36,19 @@ export default class TaskArea {
 		});
 		this.taskWrapper.appendChild(this.newItemButtonWrapper);
 	}
+	static footer() {
+		this.myFooter = domFactory.domElement({
+			classes: ['footer'],
+		});
+		this.taskWrapper.appendChild(this.myFooter);
+	}
 	static getTaskAreaElements() {
 		Events.taskAreaDomObj = {
 			taskParent: this.taskWrapper,
 			titleParent: this.taskTitleWrapper,
 			tasksParent: this.renderTasks,
 			newbtnParent: this.newItemButtonWrapper,
+			footerParent: this.myFooter,
 		};
 	}
 }

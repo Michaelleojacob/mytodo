@@ -12,6 +12,7 @@
 }
 .taskwrap {
 	border: 1px solid var(--nocolor);
+	gap: 0.3em;
 }
 .taskwrap:hover {
 	border: 1px solid var(--hoverColor);
