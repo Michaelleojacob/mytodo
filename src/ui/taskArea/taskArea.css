@@ -10,9 +10,20 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+.taskwrap {
+	border: 1px solid var(--nocolor);
+}
+.taskwrap:hover {
+	border: 1px solid var(--hoverColor);
+	background: var(--hoverColor);
+	border-radius: 8px;
+}
 .modifyName {
 	white-space: nowrap;
 	overflow: hidden;
+}
+.modifyName:hover {
+	cursor: pointer;
 }
 .from {
 	white-space: nowrap;

@@ -66,3 +66,20 @@ html {
 ::-webkit-scrollbar-thumb {
 	background: #ff0000;
 }
+
+.deleteProj {
+	color: red;
+}
+.deleteTask {
+	color: red;
+}
+[contenteditable] {
+	outline: 1px solid transparent;
+}
+
+.subbtn {
+	border: 1px solid transparent;
+}
+.canbtn {
+	border: 1px solid transparent;
+}

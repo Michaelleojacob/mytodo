@@ -19,3 +19,9 @@
 .fa-check-square {
 	margin-right: 0.2em;
 }
+.burger {
+	cursor: pointer;
+}
+.burger:hover {
+	opacity: 65%;
+}

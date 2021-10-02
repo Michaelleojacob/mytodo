@@ -36,12 +36,9 @@
 }
 .projectsWrapper > * {
 	display: grid;
-	grid-template-columns: 0em 5em auto;
-	justify-items: start;
 }
 .holdsIconAndName {
 	display: grid;
-	grid-template-columns: 2em 2em;
 	pointer-events: none;
 }
 .staticProject {
@@ -50,7 +47,20 @@
 
 .makeGreen {
 	color: green;
+	max-width: fit-content;
+	align-self: center;
 }
 .fa-folder {
-	color: brown;
+	color: #75493a;
+}
+
+.navButton {
+	border: 1px solid var(--nocolor);
+}
+
+.deleteTask {
+	border: 1px solid var(--nocolor);
+}
+.deleteProj {
+	border: 1px solid var(--nocolor);
 }

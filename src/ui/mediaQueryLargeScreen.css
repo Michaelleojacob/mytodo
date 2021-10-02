@@ -13,11 +13,13 @@
 		font-size: 4em;
 	}
 	.navWrapOutside {
-		flex-basis: 15em;
+		flex-basis: 20em;
+		min-width: 20em;
 	}
 	.navWrap {
+		flex-basis: 20em;
+		min-width: 20em;
 		margin-top: 1em;
-		margin-left: 1em;
 	}
 	.navWrap > * {
 		display: flex;
@@ -35,9 +37,19 @@
 		align-items: flex-start;
 		align-content: flex-start;
 		width: 100%;
+		max-width: 100%;
 	}
 	.taskTitleWrapper {
 		font-size: 3em;
+		align-self: center;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	.mytitle {
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	.allTodayMonthWrapper > * {
 		align-self: center;
 	}
 	.taskWrapper > .newItemButtonWrapper {
@@ -47,6 +59,7 @@
 	}
 	.taskwrap {
 		font-size: 1.8em;
+		margin-left: 1em;
 	}
 	.renderTasks {
 		width: 100%;
@@ -55,6 +68,7 @@
 	.taskwrap {
 		display: grid;
 		grid-template-columns: 88% 1em;
+		gap: 0.5em;
 		margin-top: 0.5em;
 		width: 90%;
 		justify-content: center;
@@ -63,6 +77,27 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		gap: 0.2em;
+	}
+	.projectsWrapper > * {
+		grid-template-columns: 0px 85% 1em;
+		width: 90%;
+		align-self: center;
+	}
+	.holdsIconAndName {
+		grid-template-columns: 1em 5em;
+		justify-items: start;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	.navWrap > .formInput {
+		max-width: 2em;
+	}
+	.navWrap > .formSubTree > * {
+		align-self: center;
+		max-width: 8em;
+	}
+	.newItemButtonWrapper > .formSubTree:nth-child(1):nth-child(1) {
+		max-width: 8em;
 	}
 }
 
@@ -88,6 +123,10 @@
 	}
 	.headerWrap {
 		height: 4em;
+	}
+	.projectsWrapper > * {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 	.allTodayMonthWrapper > * {
 		margin-top: 0.2em;
@@ -126,6 +165,12 @@
 		font-size: 1.5em;
 		margin-top: 0.5em;
 	}
+	.holdsIconAndName {
+		grid-template-columns: 1em 1fr;
+	}
+	.projText {
+		text-align: start;
+	}
 	.dateThing {
 		max-width: 8.7em;
 	}
@@ -153,8 +198,17 @@
 	.subbtn {
 		margin-right: 1.2em;
 	}
+	.projectsWrapper > * {
+		grid-template-columns: 0em 5em 1em;
+		gap: 0.5em;
+	}
 	.formInput {
-		max-width: 10em;
+		max-width: 8em;
+		align-self: center;
+	}
+	.formButtonWrap {
+		max-width: 5em;
+		align-self: center;
 	}
 }
 
