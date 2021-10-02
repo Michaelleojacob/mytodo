@@ -243,17 +243,3 @@
 		align-items: center;
 	}
 }
-/* @media only screen and (max-width: 500px) {
-	.taskwrap {
-		display: grid;
-		grid-template-columns: 95% 1em;
-		margin-top: 0.5em;
-		width: 90%;
-		justify-content: center;
-	}
-	.childwrap {
-		display: grid;
-		grid-template-columns: 20% 20% 60%;
-		gap: 0.2em;
-	}
-} */
