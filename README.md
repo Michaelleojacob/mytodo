@@ -1,9 +1,3 @@
-# mytodo
-
-# repo: https://github.com/Michaelleojacob/mytodo
-
-# live app: https://michaelleojacob.github.io/mytodo/
-
 # Todo List App by Michael Jacob<br><a href="https://github.com/Michaelleojacob/mytodo" target="_blank">Repository</a> <br><a href="https://michaelleojacob.github.io/mytodo/" target="_blank">Live application</a>
 
 # How to use:<br>Click on the >Live application< above. You may add a task by clicking the `+task` button and filling out the input with a name for your task.<br> Once a task is made, you can then set a date for when that task should be completed.<br>You can edit the names of tasks by clicking on the name is displayed. And you can change the date by clicking on the date display for each task.<br>Projects can also be created by clicking the `+project` button. Individual tasks can be assigned and created inside projects.<br>All changes will be saved in the user's local storage.
